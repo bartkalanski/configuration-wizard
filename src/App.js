@@ -5,12 +5,13 @@ import clsx from "clsx";
 import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "@material-ui/core/StepLabel";
-import Check from "@material-ui/icons/Check";
 import SettingsIcon from "@material-ui/icons/Settings";
 import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import VideoLabelIcon from "@material-ui/icons/VideoLabel";
+import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import StepConnector from "@material-ui/core/StepConnector";
 import Container from "@material-ui/core/Container";
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
@@ -20,14 +21,12 @@ const ColorlibConnector = withStyles({
   },
   active: {
     "& $line": {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+      background: "#00B39F",
     },
   },
   completed: {
     "& $line": {
-      backgroundImage:
-        "linear-gradient( 95deg,rgb(242,113,33) 0%,rgb(233,64,87) 50%,rgb(138,35,135) 100%)",
+      background: "#00B39F",
     },
   },
   line: {
@@ -35,6 +34,7 @@ const ColorlibConnector = withStyles({
     border: 0,
     backgroundColor: "#eaeaf0",
     borderRadius: 1,
+    transition: "transform 3s",
   },
 })(StepConnector);
 
@@ -46,18 +46,20 @@ const useColorlibStepIconStyles = makeStyles({
     width: 50,
     height: 50,
     display: "flex",
+    border: ".2rem solid #ccc",
     borderRadius: "50%",
     justifyContent: "center",
     alignItems: "center",
   },
   active: {
-    backgroundImage:
-      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+    background: "#fff",
+    color: "#3C494E",
     boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
+    border: ".2rem solid #00B39F",
   },
   completed: {
-    backgroundImage:
-      "linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)",
+    border: ".2rem solid #00B39F",
+    background: "#00B39F",
   },
 });
 
@@ -69,6 +71,7 @@ function ColorlibStepIcon(props) {
     1: <SettingsIcon />,
     2: <GroupAddIcon />,
     3: <VideoLabelIcon />,
+    4: <ExitToAppIcon />,
   };
 
   return (
@@ -102,33 +105,61 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
   },
+  container: {
+    margin: "5rem 0",
+    background: "white",
+    boxShadow: "lightgrey 0px 0px 10px",
+  },
   buttonContainer: {
-    //background: 'red',
-    textAlign: 'right',
-    marginRight: '11.5rem',
-
+    textAlign: "right",
+    marginTop: "20rem",
+    paddingBottom: "5rem",
+    marginRight: "11.5rem",
   },
   button: {
     marginRight: theme.spacing(1),
-    background: '#607D8B',
+    background: "#607D8B",
+    //padding: '1rem 2.5rem',
+    //letterSpacing: '2px',
   },
   buttonBack: {
-    background: 'white',
+    marginRight: "1rem",
+    background: "white",
+    color: "lightgray",
+  },
+  completed: {
+    textAlign: 'center',
+  },
+  checkCircleIcon: {
+    color: "#00B39F",
+    padding: '1rem',
+    height: 'auto',
+    width: '4rem',
+  },
+  instructions: {
+    fontSize: '1.5rem',
   }
 }));
 
 function getSteps() {
-  return ["Select campaign settings", "Create an ad group", "Create an ad"];
+  return [
+    "Connect to Kubernetes",
+    "Connect Meshery Operator",
+    "Add Service Mesh",
+    "Connect to external",
+  ];
 }
 
 function getStepContent(step) {
   switch (step) {
     case 0:
-      return "Select campaign settings...";
+      return "Connect to Kubernetes";
     case 1:
-      return "What is an ad group anyways?";
+      return "Connect Meshery Operator";
     case 2:
-      return "This is the bit I really care about!";
+      return "Add Service Mesh";
+    case 3:
+      return "Connect to external";
     default:
       return "Unknown step";
   }
@@ -152,7 +183,7 @@ const App = () => {
   };
 
   return (
-    <Container>
+    <Container className={classes.container}>
       <div className={classes.root}>
         <Stepper
           alternativeLabel
@@ -169,31 +200,37 @@ const App = () => {
         </Stepper>
         <div>
           {activeStep === steps.length ? (
-            <div>
+            <div className={classes.completed}>
+              <CheckCircleIcon className={classes.checkCircleIcon}/>
               <Typography className={classes.instructions}>
-                All steps completed - you&apos;re finished
+                Configuration done
               </Typography>
-              <Button onClick={handleReset} className={classes.button}>
-                Reset
-              </Button>
+              <Typography className={classes.instructions}>
+                Your configuration was successful
+              </Typography>
+              <div className={classes.buttonContainer}>
+                <Button onClick={handleReset} className={classes.button}>
+                  Reset
+                </Button>
+              </div>
             </div>
           ) : (
             <div className={classes.buttonContainer}>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={classes.button, classes.buttonBack}
-                >
-                  Back
-                </Button>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  onClick={handleNext}
-                  className={classes.button}
-                >
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
+              <Button
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                className={(classes.button, classes.buttonBack)}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={handleNext}
+                className={classes.button}
+              >
+                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              </Button>
             </div>
           )}
         </div>
