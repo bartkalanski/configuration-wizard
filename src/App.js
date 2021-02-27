@@ -102,17 +102,17 @@ ColorlibStepIcon.propTypes = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
   container: {
-    margin: "5rem 0",
+    height: '32.5rem',
+    margin: "5rem auto",
     background: "white",
     boxShadow: "lightgrey 0px 0px 10px",
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
   },
   buttonContainer: {
     textAlign: "right",
-    marginTop: "20rem",
     paddingBottom: "5rem",
     marginRight: "11.5rem",
   },
@@ -128,7 +128,7 @@ const useStyles = makeStyles((theme) => ({
     color: "lightgray",
   },
   completed: {
-    textAlign: 'center',
+   textAlign: 'center',
   },
   checkCircleIcon: {
     color: "#00B39F",
@@ -137,7 +137,7 @@ const useStyles = makeStyles((theme) => ({
     width: '4rem',
   },
   instructions: {
-    fontSize: '1.5rem',
+    //fontSize: '1.5rem',
   }
 }));
 
@@ -184,7 +184,6 @@ const App = () => {
 
   return (
     <Container className={classes.container}>
-      <div className={classes.root}>
         <Stepper
           alternativeLabel
           activeStep={activeStep}
@@ -202,10 +201,10 @@ const App = () => {
           {activeStep === steps.length ? (
             <div className={classes.completed}>
               <CheckCircleIcon className={classes.checkCircleIcon}/>
-              <Typography className={classes.instructions}>
+              <Typography variant="h4" gutterBottom="true" className={classes.instructions}>
                 Configuration done
               </Typography>
-              <Typography className={classes.instructions}>
+              <Typography variant="subtitle1" paragraph="true" gutterBottom="true" className={classes.instructions}>
                 Your configuration was successful
               </Typography>
               <div className={classes.buttonContainer}>
@@ -234,7 +233,6 @@ const App = () => {
             </div>
           )}
         </div>
-      </div>
     </Container>
   );
 };
