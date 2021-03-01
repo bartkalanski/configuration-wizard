@@ -25,9 +25,9 @@ const useStyles = makeStyles((theme) => ({
   },
   modal: {
     position: "absolute",
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'space-evenly',
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
     height: "15rem",
     padding: "2rem",
     width: 400,
@@ -39,11 +39,12 @@ const useStyles = makeStyles((theme) => ({
     boxShadow: theme.shadows[5],
   },
   buttonContainer: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
   },
   startButton: {
-    background: '#647881',
-    padding: '0.5rem 2.25rem',
+    background: "#647881",
+    color: "white",
+    padding: "0.5rem 2.25rem",
   },
   text: {
     color: "white",
@@ -100,12 +101,14 @@ const Navbar = () => {
                 functionality and settings that you can configure.
               </Typography>
               <div className={classes.buttonContainer}>
-              <Button onClick={handleClose} className={classes.text}>Skip</Button>
-              <Button onClick={handleClose} className={classes.startButton}>
+                <Button onClick={handleClose} className={classes.text}>
+                  Skip
+                </Button>
                 <Link to="/wizard" className={classes.link}>
-                  Get Started
+                  <Button onClick={handleClose} className={classes.startButton}>
+                    Get Started
+                  </Button>
                 </Link>
-              </Button>
               </div>
             </div>
           </Modal>
