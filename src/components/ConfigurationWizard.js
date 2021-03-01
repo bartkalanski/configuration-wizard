@@ -20,11 +20,13 @@ const ColorlibConnector = withStyles({
   active: {
     "& $line": {
       background: "#00B39F",
+      transition: "all 1s ease-in",
     },
   },
   completed: {
     "& $line": {
       background: "#00B39F",
+      transition: "all 1s ease-in",
     },
   },
   line: {
@@ -32,7 +34,7 @@ const ColorlibConnector = withStyles({
     border: 0,
     backgroundColor: "#eaeaf0",
     borderRadius: 1,
-    transition: "transform 3s",
+    transition: "all 0.5s ease-out ",
   },
 })(StepConnector);
 
@@ -54,10 +56,12 @@ const useColorlibStepIconStyles = makeStyles({
     color: "#3C494E",
     boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
     border: ".2rem solid #00B39F",
+    transition: "all 0.5s ease-in",
   },
   completed: {
     border: ".2rem solid #00B39F",
     background: "#00B39F",
+    transition: "all 0.5s ease-in",
   },
 });
 
