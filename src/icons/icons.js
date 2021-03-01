@@ -363,7 +363,7 @@ const icons = (completed, active) => {
     4: (
       <>
         <SvgIcon
-          viewBox="0 0 50 52"
+          viewBox="-1.5 0 50 52"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
@@ -386,7 +386,7 @@ const icons = (completed, active) => {
           </defs>
         </SvgIcon>
         <SvgIcon
-          viewBox="0 0 50 52"
+          viewBox="2.5 0 50 52"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
