@@ -65,7 +65,7 @@ function ColorlibStepIcon(props) {
   const classes = useColorlibStepIconStyles();
   const { active, completed } = props;
 
-  const icons = svgIcons(props.completed, props.active)
+  const icons = svgIcons(props.completed, props.active);
 
   return (
     <div
@@ -112,8 +112,10 @@ const useStyles = makeStyles((theme) => ({
   button: {
     marginRight: theme.spacing(1),
     background: "#607D8B",
-    //padding: '1rem 2.5rem',
-    //letterSpacing: '2px',
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#508D8B",
+    },
   },
   buttonBack: {
     marginRight: "1rem",
@@ -224,7 +226,6 @@ const ConfigurationWizard = () => {
             </Button>
             <Button
               variant="contained"
-              color="primary"
               onClick={handleNext}
               className={classes.button}
             >

@@ -42,9 +42,12 @@ const useStyles = makeStyles((theme) => ({
     alignSelf: "flex-end",
   },
   startButton: {
-    background: "#647881",
-    color: "white",
     padding: "0.5rem 2.25rem",
+    background: "#607D8B",
+    color: "white",
+    "&:hover": {
+      backgroundColor: "#508D8B",
+    },
   },
   text: {
     color: "white",
