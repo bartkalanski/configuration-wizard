@@ -12,6 +12,7 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import svgIcons from "../icons/icons";
+import AddServiceMesh from './AddServiceMesh'
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -220,22 +221,25 @@ const ConfigurationWizard = () => {
             </div>
           </div>
         ) : (
-          <div className={classes.buttonContainer}>
-            <Button
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              className={(classes.button, classes.buttonBack)}
-            >
-              Back
-            </Button>
-            <Button
-              variant="contained"
-              onClick={handleNext}
-              className={classes.button}
-            >
-              {activeStep === steps.length - 1 ? "Finish" : "Next"}
-            </Button>
-          </div>
+          <>
+            <div>{activeStep === 2 ? <AddServiceMesh/> : null}</div>
+            <div className={classes.buttonContainer}>
+              <Button
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                className={(classes.button, classes.buttonBack)}
+              >
+                Back
+              </Button>
+              <Button
+                variant="contained"
+                onClick={handleNext}
+                className={classes.button}
+              >
+                {activeStep === steps.length - 1 ? "Finish" : "Next"}
+              </Button>
+            </div>
+          </>
         )}
       </div>
     </Container>
