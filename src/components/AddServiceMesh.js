@@ -32,7 +32,7 @@ const useStyles = makeStyles({
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "center",
-    marginBottom: "7rem",
+    marginBottom: "4rem",
   },
   card: {
     height: "14rem",
