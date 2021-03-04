@@ -46,6 +46,12 @@ const useStyles = makeStyles({
     margin: "1rem 2rem -1rem 2rem",
     borderRadius: "35px 35px 0 0",
   },
+  cardUncheckedTwo: {
+    height: "8.4rem",
+    width: "14rem",
+    margin: "1rem 2rem -1rem 2rem",
+    borderRadius: "35px",
+  },
   cardContent: {
     background: "red",
     display: "flex",
@@ -95,19 +101,28 @@ const useStyles = makeStyles({
     marginBottom: "-0.4rem",
     color: "#00B39F",
   },
+  contentBottomIconDisabled: {
+    marginBottom: "-0.4rem",
+  }
 });
 
 const AddServiceMesh = () => {
-  const [checked, setChecked] = React.useState(false);
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true
+  });
   const classes = useStyles();
 
-  const handleChange = (e) => (!checked ? setChecked(true) : setChecked(false));
+  const handleChange = (event) => {
+    setState({ ...state, [event.target.name]: event.target.checked });
+  };
+
 
   return (
     <Container className={classes.root}>
       <Card
         className={
-          checked
+          state.checkedA
             ? classes.card
             : classes.cardUnchecked
         }
@@ -115,13 +130,13 @@ const AddServiceMesh = () => {
       >
         <CardContent className={classes.cardContent}>
           <div className={
-              checked
+              state.checkedA
                 ? classes.contentTop
                 : classes.contentTopUnchecked
             }>
             <FormControlLabel
               className={classes.contentTopSwitcher}
-              control={<MeshySwitch name="checkedA" />}
+              control={<MeshySwitch checked={state.checkedA} name="checkedA" />}
               onChange={handleChange}
             />
             <Typography className={classes.contentTopImg}>
@@ -130,7 +145,7 @@ const AddServiceMesh = () => {
           </div>
           <div
             className={
-              checked
+              state.checkedA
                 ? classes.contentBottomChecked
                 : classes.contentBottomUnchecked
             }
@@ -150,11 +165,49 @@ const AddServiceMesh = () => {
           </div>
         </CardContent>
       </Card>
-      <Card className={classes.card} variant="outlined">
-        <CardContent>
-          <Typography color="textSecondary" gutterBottom>
-            Card 2
-          </Typography>
+      <Card
+        className={
+          state.checkedB
+            ? classes.card
+            : classes.cardUncheckedTwo
+        }
+        variant="outlined"
+      >
+        <CardContent className={classes.cardContent}>
+          <div className={
+              state.checkedB
+                ? classes.contentTop
+                : classes.contentTopUnchecked
+            }>
+            <FormControlLabel
+              className={classes.contentTopSwitcher}
+              control={<MeshySwitch checked={state.checkedB} name="checkedB" />}
+              onChange={handleChange}
+            />
+            <Typography className={classes.contentTopImg}>
+              SVG Goes Here
+            </Typography>
+          </div>
+          <div
+            className={
+              state.checkedB
+                ? classes.contentBottomChecked
+                : classes.contentBottomUnchecked
+            }
+          >
+            <Typography className={classes.contentBottomControlPlane}>
+              Control Plane: 0{" "}
+              <FiberManualRecordRoundedIcon
+                className={classes.contentBottomIconDisabled} color="disabled"
+              />
+            </Typography>
+            <Typography className={classes.contentBottomDataPlane}>
+              Data Plane: 0
+              <FiberManualRecordRoundedIcon
+               className={classes.contentBottomIconDisabled} color="disabled"  
+              />
+            </Typography>
+          </div>
         </CardContent>
       </Card>
       <Card className={classes.card} variant="outlined">
