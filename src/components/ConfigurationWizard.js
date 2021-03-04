@@ -143,10 +143,10 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return [
-    "Connect to Kubernetes",
-    "Connect Meshery Operator",
-    "Add Service Mesh",
-    "Connect to external",
+    "Kubernetes",
+    "Meshery Operator",
+    "Service Mesh",
+    "External",
   ];
 }
 
