@@ -32,21 +32,18 @@ const useStyles = makeStyles({
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "center",
-    
   },
   card: {
     height: "14rem",
     width: "14rem",
     margin: "1rem 2rem -1rem 2rem",
     borderRadius: "15%",
-
   },
   cardUnchecked: {
     height: "8.4rem",
     width: "14rem",
     margin: "1rem 2rem 5.4rem 2rem",
     borderRadius: "35px 35px 0 0",
-
   },
   cardUncheckedTwo: {
     height: "8.4rem",
@@ -70,7 +67,6 @@ const useStyles = makeStyles({
     width: "100%",
     display: "flex",
     alignItems: "center",
-
   },
   contentTopUnchecked: {
     background: "#434343",
@@ -81,7 +77,7 @@ const useStyles = makeStyles({
   },
 
   contentTopImg: {
-    color: "white",
+    //color: "white",
   },
   contentTopSwitcher: {
     marginLeft: "0.5rem",
@@ -94,11 +90,9 @@ const useStyles = makeStyles({
     flexDirection: "column",
     alignItems: "center",
     justifyContent: "center",
-
   },
   contentBottomUnchecked: {
     display: "none",
-
   },
   contentBottomControlPlane: {},
   contentBottomDataPlane: {},
@@ -113,9 +107,9 @@ const useStyles = makeStyles({
 
 const AddServiceMesh = () => {
   const [state, setState] = React.useState({
-    checkedA: true,
-    checkedB: true,
-    checkedC: true,
+    checkedA: false,
+    checkedB: false,
+    checkedC: false,
   });
   const classes = useStyles();
 
@@ -140,7 +134,10 @@ const AddServiceMesh = () => {
               control={<MeshySwitch checked={state.checkedA} name="checkedA" />}
               onChange={handleChange}
             />
-            <Typography className={classes.contentTopImg}>
+            <Typography
+              className={classes.contentTopImg}
+              color={state.checkedA ? "error" : "textPrimary"}
+            >
               SVG Goes Here
             </Typography>
           </div>
@@ -181,7 +178,7 @@ const AddServiceMesh = () => {
               control={<MeshySwitch checked={state.checkedB} name="checkedB" />}
               onChange={handleChange}
             />
-            <Typography className={classes.contentTopImg}>
+            <Typography className={classes.contentTopImg} color={state.checkedB ? "error" : "textPrimary"}>
               SVG Goes Here
             </Typography>
           </div>
@@ -217,7 +214,7 @@ const AddServiceMesh = () => {
               control={<MeshySwitch checked={state.checkedC} name="checkedC" />}
               onChange={handleChange}
             />
-            <Typography className={classes.contentTopImg}>
+            <Typography className={classes.contentTopImg} color={state.checkedC ? "error" : "textPrimary"}>
               SVG Goes Here
             </Typography>
           </div>
