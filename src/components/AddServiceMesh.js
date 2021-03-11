@@ -6,7 +6,6 @@ import {
   FormControlLabel,
   Container,
   Card,
-  CardActions,
   CardContent,
   Typography,
 } from "@material-ui/core/";

@@ -12,7 +12,9 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 
 import svgIcons from "../icons/icons";
-import AddServiceMesh from './AddServiceMesh'
+import Kubernetes from "./Kubernetes";
+import AddServiceMesh from "./AddServiceMesh";
+import { SwipeableDrawer } from "@material-ui/core";
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -142,12 +144,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function getSteps() {
-  return [
-    "Kubernetes",
-    "Meshery Operator",
-    "Service Mesh",
-    "External",
-  ];
+  return ["Kubernetes", "Meshery Operator", "Service Mesh", "External"];
 }
 
 function getStepContent(step) {
@@ -180,6 +177,20 @@ const ConfigurationWizard = () => {
 
   const handleReset = () => {
     setActiveStep(0);
+  };
+  const handleStep = (step) => {
+    switch (step) {
+      case 0:
+        return <Kubernetes />;
+      case 1:
+        return "Meshery Operator";
+      case 2:
+        return <AddServiceMesh />;
+      case 3:
+        return "External";
+      default:
+        return null;
+    }
   };
 
   return (
@@ -222,7 +233,7 @@ const ConfigurationWizard = () => {
           </div>
         ) : (
           <>
-            <div>{activeStep === 2 ? <AddServiceMesh/> : null}</div>
+            <div>{handleStep(activeStep)}</div>
             <div className={classes.buttonContainer}>
               <Button
                 disabled={activeStep === 0}
