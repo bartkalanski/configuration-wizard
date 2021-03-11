@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { AppBar, Toolbar, Typography, Modal, Button } from "@material-ui/core/";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Modal,
+  Button,
+  Checkbox,
+  FormControlLabel,
+} from "@material-ui/core/";
 import BuildIcon from "@material-ui/icons/Build";
 
 const useStyles = makeStyles((theme) => ({
@@ -28,25 +36,39 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-evenly",
-    height: "15rem",
-    padding: "2rem",
-    width: 400,
+    height: "20rem",
+    padding: "1rem",
+    width: 500,
     top: "50%",
     left: " 50%",
     transform: "translate(-50%, -50%)",
-    backgroundColor: "#00B39F",
+    backgroundColor: "#017374",
     border: "none",
     boxShadow: theme.shadows[5],
   },
   buttonContainer: {
     alignSelf: "flex-end",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  checkbox: {
+    display: "flex",
+    flexDirection: "row",
+    alignItems: "center",
+    
+  },
+  label: {
+    fontSize: "0.75rem",
+    color: "lightgray",
+    marginRight: "7rem",
   },
   startButton: {
     padding: "0.5rem 2.25rem",
-    background: "#607D8B",
+    background: "#455A64",
     color: "white",
     "&:hover": {
-      backgroundColor: "#508D8B",
+      backgroundColor: "#607D8B",
     },
   },
   text: {
@@ -104,6 +126,12 @@ const Navbar = () => {
                 functionality and settings that you can configure.
               </Typography>
               <div className={classes.buttonContainer}>
+                <div className={classes.checkbox}>
+                  <Checkbox color="default" />
+                  <Typography className={classes.label}>
+                    Don't show this again
+                  </Typography>
+                </div>
                 <Button onClick={handleClose} className={classes.text}>
                   Skip
                 </Button>
