@@ -11,6 +11,8 @@ import {
   Typography,
 } from "@material-ui/core/";
 
+import kubernetesIcon from "../icons/Kubernetes.svg";
+
 const MeshySwitch = withStyles({
   switchBase: {
     color: "grey",
@@ -71,11 +73,14 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
   },
-
-  contentTopImg: {
-    //color: "white",
-  },
   contentTopSwitcher: {
+    marginLeft: "0.5rem",
+  },
+  iconContainer: {
+      marginLeft: "1.5rem",
+  },
+  contentTopIcon: {
+    width: "4rem",
     marginLeft: "0.5rem",
   },
   contentBottomChecked: {
@@ -128,12 +133,16 @@ const Kubernetes = () => {
             control={<MeshySwitch checked={state.checked} name="checked" />}
             onChange={handleChange}
           />
-          <Typography
-            className={classes.contentTopImg}
-            color={state.checked ? "error" : "textPrimary"}
-          >
-            SVG Goes Here
-          </Typography>
+          <div className={classes.iconContainer}>
+            <img
+              className={classes.contentTopIcon}
+              src={kubernetesIcon}
+              alt="kubernetes icon"
+            />
+            <Typography className={classes.contentTopImg} color="primary">
+              Kubernetes
+            </Typography>
+          </div>
         </div>
         <div
           className={
