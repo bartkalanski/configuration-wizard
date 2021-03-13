@@ -8,6 +8,7 @@ import {
   CardContent,
   Container,
   Typography,
+  Fade
 } from "@material-ui/core/";
 
 import mesheryOperatorIcon from "../icons/meshery-operator-dark.svg";
@@ -120,6 +121,7 @@ const MesheryOperator = () => {
   };
 
   return (
+    <Fade timeout={{ enter: "500ms" }}  in="true">
     <Container className={classes.cardContainer}>
       {" "}
       <Card
@@ -163,6 +165,7 @@ const MesheryOperator = () => {
         </CardContent>
       </Card>
     </Container>
+    </Fade>
   );
 };
 

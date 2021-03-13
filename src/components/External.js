@@ -9,6 +9,7 @@ import {
   CardContent,
   Typography,
   Container,
+  Fade
 } from "@material-ui/core/";
 
 import grafanaIcon from "../icons/grafana.svg";
@@ -40,7 +41,7 @@ const useStyles = makeStyles({
     width: "10rem",
     border: "1px solid gray",
     borderRadius: "0.75rem",
-    margin: "1rem 2rem 5.4rem 2rem",
+    margin: "1rem 2rem 5rem 2rem",
   },
   cardChecked: {
     height: "15rem",
@@ -123,6 +124,7 @@ const External = () => {
   };
 
   return (
+    <Fade timeout={{ enter: "500ms" }}  in="true">
     <Container className={classes.cardContainer}>
       <Card
         className={
@@ -225,6 +227,7 @@ const External = () => {
         </CardContent>
       </Card>
     </Container>
+    </Fade>
   );
 };
 

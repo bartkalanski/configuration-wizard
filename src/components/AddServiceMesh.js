@@ -8,6 +8,7 @@ import {
   CardContent,
   Typography,
   Container,
+  Fade
 } from "@material-ui/core/";
 
 import TimerIcon from '@material-ui/icons/Timer';
@@ -127,6 +128,7 @@ const External = () => {
   };
 
   return (
+    <Fade timeout={{ enter: "500ms" }}  in="true">
     <Container className={classes.cardContainer}>
       <Card
         className={
@@ -274,6 +276,7 @@ const External = () => {
         </CardContent>
       </Card>
     </Container>
+    </Fade>
   );
 };
 

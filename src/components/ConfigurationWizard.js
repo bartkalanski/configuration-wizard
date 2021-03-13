@@ -10,12 +10,13 @@ import Container from "@material-ui/core/Container";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
+import Fade from "@material-ui/core/Fade";
 
 import svgIcons from "../icons/icons";
 import Kubernetes from "./Kubernetes";
 import MesheryOperator from "./MesheryOperator";
 import AddServiceMesh from "./AddServiceMesh";
-import External from './External'
+import External from "./External";
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -185,7 +186,7 @@ const ConfigurationWizard = () => {
       case 2:
         return <AddServiceMesh />;
       case 3:
-        return <External/>;
+        return <External />;
       default:
         return null;
     }
@@ -204,53 +205,57 @@ const ConfigurationWizard = () => {
           </Step>
         ))}
       </Stepper>
-      <div>
-        {activeStep === steps.length ? (
-          <div className={classes.completed}>
-            <CheckCircleIcon className={classes.checkCircleIcon} />
-            <Typography
-              variant="h4"
-              gutterBottom="true"
-              className={classes.instructions}
-            >
-              Configuration done
-            </Typography>
-            <Typography
-              variant="subtitle1"
-              paragraph="true"
-              gutterBottom="true"
-              className={classes.instructions}
-            >
-              Your configuration was successful
-            </Typography>
-            <div className={classes.buttonContainer}>
-              <Button onClick={handleReset} className={classes.button}>
-                Reset
-              </Button>
-            </div>
-          </div>
-        ) : (
-          <>
-            <div>{handleStep(activeStep)}</div>
-            <div className={classes.buttonContainer}>
-              <Button
-                disabled={activeStep === 0}
-                onClick={handleBack}
-                className={(classes.button, classes.buttonBack)}
-              >
-                Back
-              </Button>
-              <Button
-                variant="contained"
-                onClick={handleNext}
-                className={classes.button}
-              >
-                {activeStep === steps.length - 1 ? "Finish" : "Next"}
-              </Button>
-            </div>
-          </>
-        )}
-      </div>
+      <Fade timeout={{ enter: "1500ms" }} in="true">
+        <div>
+          {activeStep === steps.length ? (
+            <Fade timeout={{ enter: "500ms" }} in="true">
+              <div className={classes.completed}>
+                <CheckCircleIcon className={classes.checkCircleIcon} />
+                <Typography
+                  variant="h4"
+                  gutterBottom="true"
+                  className={classes.instructions}
+                >
+                  Configuration done
+                </Typography>
+                <Typography
+                  variant="subtitle1"
+                  paragraph="true"
+                  gutterBottom="true"
+                  className={classes.instructions}
+                >
+                  Your configuration was successful
+                </Typography>
+                <div className={classes.buttonContainer}>
+                  <Button onClick={handleReset} className={classes.button}>
+                    Reset
+                  </Button>
+                </div>
+              </div>
+            </Fade>
+          ) : (
+            <>
+              <div>{handleStep(activeStep)}</div>
+              <div className={classes.buttonContainer}>
+                <Button
+                  disabled={activeStep === 0}
+                  onClick={handleBack}
+                  className={(classes.button, classes.buttonBack)}
+                >
+                  Back
+                </Button>
+                <Button
+                  variant="contained"
+                  onClick={handleNext}
+                  className={classes.button}
+                >
+                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
+                </Button>
+              </div>
+            </>
+          )}
+        </div>
+      </Fade>
     </Container>
   );
 };
