@@ -11,6 +11,7 @@ import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import Fade from "@material-ui/core/Fade";
+import { Link } from "react-router-dom";
 
 import svgIcons from "../icons/icons";
 import Kubernetes from "./Kubernetes";
@@ -120,6 +121,7 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
+    textDecoration: "none",
     background: "#607D8B",
     color: "white",
     "&:hover": {
@@ -130,6 +132,10 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "1rem",
     background: "white",
     color: "lightgray",
+  },
+  buttonLink: {
+    textDecoration: "none",
+    color: "white",
   },
   completed: {
     textAlign: "center",
@@ -227,8 +233,8 @@ const ConfigurationWizard = () => {
                   Your configuration was successful
                 </Typography>
                 <div className={classes.buttonContainer}>
-                  <Button onClick={handleReset} className={classes.button}>
-                    Reset
+                  <Button className={classes.button}>
+                    <Link className={classes.buttonLink} to="/">Done</Link>
                   </Button>
                 </div>
               </div>
