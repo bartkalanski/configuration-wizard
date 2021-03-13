@@ -177,7 +177,10 @@ const AddServiceMesh = () => {
               control={<MeshySwitch checked={state.checkedB} name="checkedB" />}
               onChange={handleChange}
             />
-            <Typography className={classes.contentTopImg} color={state.checkedB ? "error" : "textPrimary"}>
+            <Typography
+              className={classes.contentTopImg}
+              color={state.checkedB ? "error" : "textPrimary"}
+            >
               SVG Goes Here
             </Typography>
           </div>
@@ -213,7 +216,10 @@ const AddServiceMesh = () => {
               control={<MeshySwitch checked={state.checkedC} name="checkedC" />}
               onChange={handleChange}
             />
-            <Typography className={classes.contentTopImg} color={state.checkedC ? "error" : "textPrimary"}>
+            <Typography
+              className={classes.contentTopImg}
+              color={state.checkedC ? "error" : "textPrimary"}
+            >
               SVG Goes Here
             </Typography>
           </div>

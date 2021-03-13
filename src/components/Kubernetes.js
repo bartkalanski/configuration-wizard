@@ -1,5 +1,4 @@
 import React from "react";
-import FiberManualRecordRoundedIcon from "@material-ui/icons/FiberManualRecordRounded";
 import {
   makeStyles,
   withStyles,
@@ -87,7 +86,6 @@ const useStyles = makeStyles({
     color: "white",
     fontSize: "0.85rem",
   },
-
   contentBottomChecked: {
     background: "white",
     height: "6rem",

@@ -13,8 +13,8 @@ import Typography from "@material-ui/core/Typography";
 
 import svgIcons from "../icons/icons";
 import Kubernetes from "./Kubernetes";
+import MesheryOperator from "./MesheryOperator";
 import AddServiceMesh from "./AddServiceMesh";
-import { SwipeableDrawer } from "@material-ui/core";
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -138,9 +138,6 @@ const useStyles = makeStyles((theme) => ({
     height: "auto",
     width: "4rem",
   },
-  instructions: {
-    //fontSize: '1.5rem',
-  },
 }));
 
 function getSteps() {
@@ -183,7 +180,7 @@ const ConfigurationWizard = () => {
       case 0:
         return <Kubernetes />;
       case 1:
-        return "Meshery Operator";
+        return <MesheryOperator />;
       case 2:
         return <AddServiceMesh />;
       case 3:
