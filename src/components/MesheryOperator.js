@@ -32,7 +32,6 @@ const useStyles = makeStyles({
     flexDirection: "row",
     alignContent: "center",
     justifyContent: "center",
-    transition: "all 2s ease-in",
   },
   card: {
     position: "relative",

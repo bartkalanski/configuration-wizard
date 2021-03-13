@@ -15,6 +15,7 @@ import svgIcons from "../icons/icons";
 import Kubernetes from "./Kubernetes";
 import MesheryOperator from "./MesheryOperator";
 import AddServiceMesh from "./AddServiceMesh";
+import External from './External'
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -184,7 +185,7 @@ const ConfigurationWizard = () => {
       case 2:
         return <AddServiceMesh />;
       case 3:
-        return "External";
+        return <External/>;
       default:
         return null;
     }
