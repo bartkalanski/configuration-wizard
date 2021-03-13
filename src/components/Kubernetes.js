@@ -37,17 +37,16 @@ const useStyles = makeStyles({
   card: {
     position: "relative",
     left: "7.5rem",
-    width: "14rem",
-    borderRadius: "15%",
+    width: "10rem",
+    border: "1px solid gray",
+    borderRadius: "0.75rem",
   },
   cardChecked: {
-    bottom: "2.5rem",
-    height: "14rem",
+    height: "15rem",
   },
   cardUnchecked: {
-    bottom: "8.1rem",
-    height: "8.4rem",
-    borderRadius: "35px",
+    bottom: "5rem",
+    height: "10rem",
   },
   cardContent: {
     background: "red",
@@ -61,7 +60,7 @@ const useStyles = makeStyles({
   },
   contentTop: {
     background: "#434343",
-    height: "60%",
+    height: "12rem",
     width: "100%",
     display: "flex",
     alignItems: "center",
@@ -77,15 +76,21 @@ const useStyles = makeStyles({
     marginLeft: "0.5rem",
   },
   iconContainer: {
-      marginLeft: "1.5rem",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
   },
-  contentTopIcon: {
-    width: "4rem",
-    marginLeft: "0.5rem",
+  cardIcon: {
+    width: "3rem",
   },
+  cardIconText: {
+    color: "white",
+    fontSize: "0.85rem",
+  },
+
   contentBottomChecked: {
     background: "white",
-    height: "40%",
+    height: "6rem",
     width: "100%",
     display: "flex",
     flexDirection: "column",
@@ -96,10 +101,13 @@ const useStyles = makeStyles({
     display: "none",
   },
   contentBottomInput: {
-    border: "1px solid gray",
+    border: "1px solid lightgray",
     borderRadius: "5px",
-    padding: "0 0.5rem",
-    marginBottom: "0.2rem",
+    width: "9rem",
+    height: "2rem",
+    marginBottom: "0.15rem",
+    fontSize: "0.75rem",
+    padding: "0.50rem",
   },
 });
 
@@ -135,11 +143,11 @@ const Kubernetes = () => {
           />
           <div className={classes.iconContainer}>
             <img
-              className={classes.contentTopIcon}
+              className={classes.cardIcon}
               src={kubernetesIcon}
               alt="kubernetes icon"
             />
-            <Typography className={classes.contentTopImg} color="primary">
+            <Typography className={classes.cardIconText} color="primary">
               Kubernetes
             </Typography>
           </div>
