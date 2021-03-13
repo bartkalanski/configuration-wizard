@@ -4,12 +4,14 @@ import {
   withStyles,
   Switch,
   FormControlLabel,
-  Container,
   Card,
   CardContent,
   Typography,
+  Container,
 } from "@material-ui/core/";
-import FiberManualRecordRoundedIcon from "@material-ui/icons/FiberManualRecordRounded";
+
+import TimerIcon from '@material-ui/icons/Timer';
+import FiberManualRecordRoundedIcon from '@material-ui/icons/FiberManualRecordRounded';
 
 const MeshySwitch = withStyles({
   switchBase: {
@@ -26,29 +28,25 @@ const MeshySwitch = withStyles({
 })(Switch);
 
 const useStyles = makeStyles({
-  root: {
+  cardContainer: {
     display: "flex",
     flexDirection: "row",
-    alignContent: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    padding: "2rem 6rem",
   },
   card: {
-    height: "14rem",
-    width: "14rem",
-    margin: "1rem 2rem -1rem 2rem",
-    borderRadius: "15%",
+    position: "relative",
+    width: "10rem",
+    border: "1px solid gray",
+    borderRadius: "0.75rem",
+    margin: "1rem 2rem 5rem 2rem",
+  },
+  cardChecked: {
+    height: "15rem",
+    marginBottom: "0rem",
   },
   cardUnchecked: {
-    height: "8.4rem",
-    width: "14rem",
-    margin: "1rem 2rem 5.4rem 2rem",
-    borderRadius: "35px 35px 0 0",
-  },
-  cardUncheckedTwo: {
-    height: "8.4rem",
-    width: "14rem",
-    margin: "1rem 2rem 5.4rem 2rem",
-    borderRadius: "35px",
+    height: "10rem",
   },
   cardContent: {
     background: "red",
@@ -62,7 +60,7 @@ const useStyles = makeStyles({
   },
   contentTop: {
     background: "#434343",
-    height: "60%",
+    height: "12rem",
     width: "100%",
     display: "flex",
     alignItems: "center",
@@ -74,16 +72,24 @@ const useStyles = makeStyles({
     display: "flex",
     alignItems: "center",
   },
-
-  contentTopImg: {
-    //color: "white",
-  },
   contentTopSwitcher: {
     marginLeft: "0.5rem",
   },
+  iconContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  cardIcon: {
+    width: "3rem",
+  },
+  cardIconText: {
+    color: "white",
+    fontSize: "0.85rem",
+  },
   contentBottomChecked: {
     background: "white",
-    height: "40%",
+    height: "6rem",
     width: "100%",
     display: "flex",
     flexDirection: "column",
@@ -93,18 +99,22 @@ const useStyles = makeStyles({
   contentBottomUnchecked: {
     display: "none",
   },
-  contentBottomControlPlane: {},
-  contentBottomDataPlane: {},
+  contentBottomInput: {
+    border: "1px solid lightgray",
+    borderRadius: "5px",
+    width: "9rem",
+    height: "2rem",
+    marginBottom: "0.15rem",
+    fontSize: "0.75rem",
+    padding: "0.50rem",
+  },
   contentBottomIcon: {
     marginBottom: "-0.4rem",
     color: "#00B39F",
   },
-  contentBottomIconDisabled: {
-    marginBottom: "-0.4rem",
-  },
 });
 
-const AddServiceMesh = () => {
+const External = () => {
   const [state, setState] = React.useState({
     checkedA: false,
     checkedB: false,
@@ -117,9 +127,13 @@ const AddServiceMesh = () => {
   };
 
   return (
-    <Container className={classes.root}>
+    <Container className={classes.cardContainer}>
       <Card
-        className={state.checkedA ? classes.card : classes.cardUnchecked}
+        className={
+          state.checkedA
+            ? `${classes.card} ${classes.cardChecked}`
+            : `${classes.card} ${classes.cardUnchecked}`
+        }
         variant="outlined"
       >
         <CardContent className={classes.cardContent}>
@@ -133,12 +147,13 @@ const AddServiceMesh = () => {
               control={<MeshySwitch checked={state.checkedA} name="checkedA" />}
               onChange={handleChange}
             />
-            <Typography
-              className={classes.contentTopImg}
-              color={state.checkedA ? "error" : "textPrimary"}
-            >
-              SVG Goes Here
-            </Typography>
+            <div className={classes.iconContainer}>
+              <TimerIcon className={classes.cardIcon} />
+              <Typography className={classes.cardIconText} color="primary">
+                Open Service <br />
+                Mesh
+              </Typography>
+            </div>
           </div>
           <div
             className={
@@ -163,7 +178,11 @@ const AddServiceMesh = () => {
         </CardContent>
       </Card>
       <Card
-        className={state.checkedB ? classes.card : classes.cardUncheckedTwo}
+        className={
+          state.checkedB
+            ? `${classes.card} ${classes.cardChecked}`
+            : `${classes.card} ${classes.cardUnchecked}`
+        }
         variant="outlined"
       >
         <CardContent className={classes.cardContent}>
@@ -177,12 +196,12 @@ const AddServiceMesh = () => {
               control={<MeshySwitch checked={state.checkedB} name="checkedB" />}
               onChange={handleChange}
             />
-            <Typography
-              className={classes.contentTopImg}
-              color={state.checkedB ? "error" : "textPrimary"}
-            >
-              SVG Goes Here
-            </Typography>
+            <div className={classes.iconContainer}>
+              <TimerIcon className={classes.cardIcon} />
+              <Typography className={classes.cardIconText} color="primary">
+                Consul
+              </Typography>
+            </div>
           </div>
           <div
             className={
@@ -192,35 +211,64 @@ const AddServiceMesh = () => {
             }
           >
             <Typography className={classes.contentBottomControlPlane}>
-              Control Plane: 0{" "}
+              Control Plane: 6{" "}
               <FiberManualRecordRoundedIcon
-                className={classes.contentBottomIconDisabled}
-                color="disabled"
+                className={classes.contentBottomIcon}
               />
             </Typography>
             <Typography className={classes.contentBottomDataPlane}>
-              Data Plane: 0
+              Data Plane: 18
               <FiberManualRecordRoundedIcon
-                className={classes.contentBottomIconDisabled}
-                color="disabled"
+                className={classes.contentBottomIcon}
               />
             </Typography>
           </div>
         </CardContent>
       </Card>
-      <Card className={classes.cardUncheckedTwo} variant="outlined">
+      <Card
+        className={
+          state.checkedC
+            ? `${classes.card} ${classes.cardChecked}`
+            : `${classes.card} ${classes.cardUnchecked}`
+        }
+        variant="outlined"
+      >
         <CardContent className={classes.cardContent}>
-          <div className={classes.contentTopUnchecked}>
+          <div
+            className={
+              state.checkedC ? classes.contentTop : classes.contentTopUnchecked
+            }
+          >
             <FormControlLabel
               className={classes.contentTopSwitcher}
               control={<MeshySwitch checked={state.checkedC} name="checkedC" />}
               onChange={handleChange}
             />
-            <Typography
-              className={classes.contentTopImg}
-              color={state.checkedC ? "error" : "textPrimary"}
-            >
-              SVG Goes Here
+            <div className={classes.iconContainer}>
+              <TimerIcon className={classes.cardIcon} />
+              <Typography className={classes.cardIconText} color="primary">
+                Linkered
+              </Typography>
+            </div>
+          </div>
+          <div
+            className={
+              state.checkedC
+                ? classes.contentBottomChecked
+                : classes.contentBottomUnchecked
+            }
+          >
+            <Typography className={classes.contentBottomControlPlane}>
+              Control Plane: 6{" "}
+              <FiberManualRecordRoundedIcon
+                className={classes.contentBottomIcon}
+              />
+            </Typography>
+            <Typography className={classes.contentBottomDataPlane}>
+              Data Plane: 18
+              <FiberManualRecordRoundedIcon
+                className={classes.contentBottomIcon}
+              />
             </Typography>
           </div>
         </CardContent>
@@ -229,4 +277,4 @@ const AddServiceMesh = () => {
   );
 };
 
-export default AddServiceMesh;
+export default External;

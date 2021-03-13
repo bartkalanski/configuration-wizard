@@ -7,9 +7,11 @@ import {
   Input,
   Card,
   CardContent,
+  Container,
   Typography,
 } from "@material-ui/core/";
 
+import mesheryOperatorIcon from "../icons/meshery-operator-dark.svg";
 import kubernetesIcon from "../icons/Kubernetes.svg";
 
 const MeshySwitch = withStyles({
@@ -27,24 +29,24 @@ const MeshySwitch = withStyles({
 })(Switch);
 
 const useStyles = makeStyles({
-  root: {
+  cardContainer: {
     display: "flex",
     flexDirection: "row",
-    alignContent: "center",
-    justifyContent: "center",
+    justifyContent: "flex-start",
+    padding: "2rem 6rem",
   },
   card: {
     position: "relative",
-    left: "7.5rem",
     width: "10rem",
     border: "1px solid gray",
     borderRadius: "0.75rem",
+    margin: "1rem 2rem 5rem 2rem",
   },
   cardChecked: {
     height: "15rem",
+    marginBottom: "0rem",
   },
   cardUnchecked: {
-    bottom: "5rem",
     height: "10rem",
   },
   cardContent: {
@@ -75,9 +77,9 @@ const useStyles = makeStyles({
     marginLeft: "0.5rem",
   },
   iconContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   cardIcon: {
     width: "3rem",
@@ -120,56 +122,59 @@ const Kubernetes = () => {
   };
 
   return (
-    <Card
-      className={
-        state.checked
-          ? `${classes.card} ${classes.cardChecked}`
-          : `${classes.card} ${classes.cardUnchecked}`
-      }
-      variant="outlined"
-    >
-      <CardContent className={classes.cardContent}>
-        <div
-          className={
-            state.checked ? classes.contentTop : classes.contentTopUnchecked
-          }
-        >
-          <FormControlLabel
-            className={classes.contentTopSwitcher}
-            control={<MeshySwitch checked={state.checked} name="checked" />}
-            onChange={handleChange}
-          />
-          <div className={classes.iconContainer}>
-            <img
-              className={classes.cardIcon}
-              src={kubernetesIcon}
-              alt="kubernetes icon"
+    <Container className={classes.cardContainer}>
+      {" "}
+      <Card
+        className={
+          state.checked
+            ? `${classes.card} ${classes.cardChecked}`
+            : `${classes.card} ${classes.cardUnchecked}`
+        }
+        variant="outlined"
+      >
+        <CardContent className={classes.cardContent}>
+          <div
+            className={
+              state.checked ? classes.contentTop : classes.contentTopUnchecked
+            }
+          >
+            <FormControlLabel
+              className={classes.contentTopSwitcher}
+              control={<MeshySwitch checked={state.checked} name="checked" />}
+              onChange={handleChange}
             />
-            <Typography className={classes.cardIconText} color="primary">
-              Kubernetes
-            </Typography>
+            <div className={classes.iconContainer}>
+              <img
+                className={classes.cardIcon}
+                src={kubernetesIcon}
+                alt="kubernetes icon"
+              />
+              <Typography className={classes.cardIconText} color="primary">
+                Kubernetes
+              </Typography>
+            </div>
           </div>
-        </div>
-        <div
-          className={
-            state.checked
-              ? classes.contentBottomChecked
-              : classes.contentBottomUnchecked
-          }
-        >
-          <Input
-            placeholder="Upload"
-            disableUnderline="false"
-            className={classes.contentBottomInput}
-          ></Input>
-          <Input
-            placeholder="Context"
-            disableUnderline="false"
-            className={classes.contentBottomInput}
-          ></Input>
-        </div>
-      </CardContent>
-    </Card>
+          <div
+            className={
+              state.checked
+                ? classes.contentBottomChecked
+                : classes.contentBottomUnchecked
+            }
+          >
+            <Input
+              placeholder="Upload"
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
+            <Input
+              placeholder="Context"
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
+          </div>
+        </CardContent>
+      </Card>
+    </Container>
   );
 };
 
