@@ -14,10 +14,10 @@ import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
 
 import svgIcons from "../icons/icons";
-import Kubernetes from "./Kubernetes";
-import MesheryOperator from "./MesheryOperator";
-import AddServiceMesh from "./AddServiceMesh";
-import External from "./External";
+import Kubernetes from "./screens/Kubernetes";
+import MesheryOperator from "./screens/MesheryOperator";
+import AddServiceMesh from "./screens/AddServiceMesh";
+import External from "./screens/External";
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -234,7 +234,9 @@ const ConfigurationWizard = () => {
                 </Typography>
                 <div className={classes.buttonContainer}>
                   <Button className={classes.button}>
-                    <Link className={classes.buttonLink} to="/">Done</Link>
+                    <Link className={classes.buttonLink} to="/">
+                      Done
+                    </Link>
                   </Button>
                 </div>
               </div>

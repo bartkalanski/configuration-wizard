@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 import Home from "./components/Home";
-import ConfigurationWizard from "./components/ConfigurationWizard";
+import ConfigurationWizard from "./configuration-wizard/ConfigurationWizard";
 import Navbar from "./components/Navbar";
 const App = () => {
   return (

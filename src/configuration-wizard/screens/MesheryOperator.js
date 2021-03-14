@@ -4,15 +4,14 @@ import {
   withStyles,
   Switch,
   FormControlLabel,
-  Input,
   Card,
   CardContent,
   Container,
   Typography,
+  Fade
 } from "@material-ui/core/";
 
-import mesheryOperatorIcon from "../icons/meshery-operator-dark.svg";
-import kubernetesIcon from "../icons/Kubernetes.svg";
+import mesheryOperatorIcon from "../../icons/meshery-operator-dark.svg";
 
 const MeshySwitch = withStyles({
   switchBase: {
@@ -111,7 +110,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Kubernetes = () => {
+const MesheryOperator = () => {
   const [state, setState] = React.useState({
     checked: false,
   });
@@ -122,6 +121,7 @@ const Kubernetes = () => {
   };
 
   return (
+    <Fade timeout={{ enter: "500ms" }}  in="true">
     <Container className={classes.cardContainer}>
       {" "}
       <Card
@@ -146,11 +146,11 @@ const Kubernetes = () => {
             <div className={classes.iconContainer}>
               <img
                 className={classes.cardIcon}
-                src={kubernetesIcon}
-                alt="kubernetes icon"
+                src={mesheryOperatorIcon}
+                alt="Meshery Operator icon"
               />
               <Typography className={classes.cardIconText} color="primary">
-                Kubernetes
+                Meshery<br/>Operator
               </Typography>
             </div>
           </div>
@@ -161,21 +161,12 @@ const Kubernetes = () => {
                 : classes.contentBottomUnchecked
             }
           >
-            <Input
-              placeholder="Upload"
-              disableUnderline="false"
-              className={classes.contentBottomInput}
-            ></Input>
-            <Input
-              placeholder="Context"
-              disableUnderline="false"
-              className={classes.contentBottomInput}
-            ></Input>
           </div>
         </CardContent>
       </Card>
     </Container>
+    </Fade>
   );
 };
 
-export default Kubernetes;
+export default MesheryOperator;

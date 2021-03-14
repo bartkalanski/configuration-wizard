@@ -7,13 +7,11 @@ import {
   Input,
   Card,
   CardContent,
-  Typography,
   Container,
-  Fade
+  Typography,
 } from "@material-ui/core/";
 
-import grafanaIcon from "../icons/grafana.svg";
-import prometheusIcon from "../icons/prometheus.svg";
+import kubernetesIcon from "../../icons/Kubernetes.svg";
 
 const MeshySwitch = withStyles({
   switchBase: {
@@ -112,10 +110,9 @@ const useStyles = makeStyles({
   },
 });
 
-const External = () => {
+const Kubernetes = () => {
   const [state, setState] = React.useState({
-    checkedA: false,
-    checkedB: false,
+    checked: false,
   });
   const classes = useStyles();
 
@@ -124,11 +121,11 @@ const External = () => {
   };
 
   return (
-    <Fade timeout={{ enter: "500ms" }}  in="true">
     <Container className={classes.cardContainer}>
+      {" "}
       <Card
         className={
-          state.checkedA
+          state.checked
             ? `${classes.card} ${classes.cardChecked}`
             : `${classes.card} ${classes.cardUnchecked}`
         }
@@ -137,78 +134,28 @@ const External = () => {
         <CardContent className={classes.cardContent}>
           <div
             className={
-              state.checkedA ? classes.contentTop : classes.contentTopUnchecked
+              state.checked ? classes.contentTop : classes.contentTopUnchecked
             }
           >
             <FormControlLabel
               className={classes.contentTopSwitcher}
-              control={<MeshySwitch checked={state.checkedA} name="checkedA" />}
+              control={<MeshySwitch checked={state.checked} name="checked" />}
               onChange={handleChange}
             />
             <div className={classes.iconContainer}>
               <img
                 className={classes.cardIcon}
-                src={grafanaIcon}
-                alt="grafana icon"
+                src={kubernetesIcon}
+                alt="kubernetes icon"
               />
               <Typography className={classes.cardIconText} color="primary">
-                Grafana
+                Kubernetes
               </Typography>
             </div>
           </div>
           <div
             className={
-              state.checkedA
-                ? classes.contentBottomChecked
-                : classes.contentBottomUnchecked
-            }
-          >
-            <Input
-              placeholder="URL"
-              disableUnderline="false"
-              className={classes.contentBottomInput}
-            ></Input>
-            <Input
-              placeholder="API Key"
-              disableUnderline="false"
-              className={classes.contentBottomInput}
-            ></Input>
-          </div>
-        </CardContent>
-      </Card>
-      <Card
-        className={
-            state.checkedB
-            ? `${classes.card} ${classes.cardChecked}`
-            : `${classes.card} ${classes.cardUnchecked}`
-        }
-        variant="outlined"
-      >
-        <CardContent className={classes.cardContent}>
-          <div
-            className={
-              state.checkedB ? classes.contentTop : classes.contentTopUnchecked
-            }
-          >
-            <FormControlLabel
-              className={classes.contentTopSwitcher}
-              control={<MeshySwitch checked={state.checkedB} name="checkedB" />}
-              onChange={handleChange}
-            />
-            <div className={classes.iconContainer}>
-              <img
-                className={classes.cardIcon}
-                src={prometheusIcon}
-                alt="prometheus icon"
-              />
-              <Typography className={classes.cardIconText} color="primary">
-                Prometheus
-              </Typography>
-            </div>
-          </div>
-          <div
-            className={
-              state.checkedB
+              state.checked
                 ? classes.contentBottomChecked
                 : classes.contentBottomUnchecked
             }
@@ -227,8 +174,7 @@ const External = () => {
         </CardContent>
       </Card>
     </Container>
-    </Fade>
   );
 };
 
-export default External;
+export default Kubernetes;

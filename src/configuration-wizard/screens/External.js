@@ -4,14 +4,16 @@ import {
   withStyles,
   Switch,
   FormControlLabel,
+  Input,
   Card,
   CardContent,
-  Container,
   Typography,
+  Container,
   Fade
 } from "@material-ui/core/";
 
-import mesheryOperatorIcon from "../icons/meshery-operator-dark.svg";
+import grafanaIcon from "../../icons/grafana.svg";
+import prometheusIcon from "../../icons/prometheus.svg";
 
 const MeshySwitch = withStyles({
   switchBase: {
@@ -110,9 +112,10 @@ const useStyles = makeStyles({
   },
 });
 
-const MesheryOperator = () => {
+const External = () => {
   const [state, setState] = React.useState({
-    checked: false,
+    checkedA: false,
+    checkedB: false,
   });
   const classes = useStyles();
 
@@ -123,10 +126,9 @@ const MesheryOperator = () => {
   return (
     <Fade timeout={{ enter: "500ms" }}  in="true">
     <Container className={classes.cardContainer}>
-      {" "}
       <Card
         className={
-          state.checked
+          state.checkedA
             ? `${classes.card} ${classes.cardChecked}`
             : `${classes.card} ${classes.cardUnchecked}`
         }
@@ -135,32 +137,92 @@ const MesheryOperator = () => {
         <CardContent className={classes.cardContent}>
           <div
             className={
-              state.checked ? classes.contentTop : classes.contentTopUnchecked
+              state.checkedA ? classes.contentTop : classes.contentTopUnchecked
             }
           >
             <FormControlLabel
               className={classes.contentTopSwitcher}
-              control={<MeshySwitch checked={state.checked} name="checked" />}
+              control={<MeshySwitch checked={state.checkedA} name="checkedA" />}
               onChange={handleChange}
             />
             <div className={classes.iconContainer}>
               <img
                 className={classes.cardIcon}
-                src={mesheryOperatorIcon}
-                alt="Meshery Operator icon"
+                src={grafanaIcon}
+                alt="grafana icon"
               />
               <Typography className={classes.cardIconText} color="primary">
-                Meshery<br/>Operator
+                Grafana
               </Typography>
             </div>
           </div>
           <div
             className={
-              state.checked
+              state.checkedA
                 ? classes.contentBottomChecked
                 : classes.contentBottomUnchecked
             }
           >
+            <Input
+              placeholder="URL"
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
+            <Input
+              placeholder="API Key"
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
+          </div>
+        </CardContent>
+      </Card>
+      <Card
+        className={
+            state.checkedB
+            ? `${classes.card} ${classes.cardChecked}`
+            : `${classes.card} ${classes.cardUnchecked}`
+        }
+        variant="outlined"
+      >
+        <CardContent className={classes.cardContent}>
+          <div
+            className={
+              state.checkedB ? classes.contentTop : classes.contentTopUnchecked
+            }
+          >
+            <FormControlLabel
+              className={classes.contentTopSwitcher}
+              control={<MeshySwitch checked={state.checkedB} name="checkedB" />}
+              onChange={handleChange}
+            />
+            <div className={classes.iconContainer}>
+              <img
+                className={classes.cardIcon}
+                src={prometheusIcon}
+                alt="prometheus icon"
+              />
+              <Typography className={classes.cardIconText} color="primary">
+                Prometheus
+              </Typography>
+            </div>
+          </div>
+          <div
+            className={
+              state.checkedB
+                ? classes.contentBottomChecked
+                : classes.contentBottomUnchecked
+            }
+          >
+            <Input
+              placeholder="Upload"
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
+            <Input
+              placeholder="Context"
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
           </div>
         </CardContent>
       </Card>
@@ -169,4 +231,4 @@ const MesheryOperator = () => {
   );
 };
 
-export default MesheryOperator;
+export default External;
