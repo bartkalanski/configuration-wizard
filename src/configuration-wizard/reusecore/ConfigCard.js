@@ -163,7 +163,9 @@ const ConfigCard = ({
               : classes.contentBottomUnchecked
           }
         >
-          {name === "Open Service Mesh" || "Consul" || "Consul" ? (
+          {name === "Open Service Mesh" ||
+          name === "Consul" ||
+          name === "Linkerd" ? (
             <>
               <Typography className={classes.contentBottomControlPlane}>
                 Control Plane: 6{" "}
