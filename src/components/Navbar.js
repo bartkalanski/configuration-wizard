@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-ui/core/";
 import BuildIcon from "@material-ui/icons/Build";
-import PopUp from './Modal'
+import PopUp from './PopUp'
 
 const useStyles = makeStyles((theme) => ({
   root: {

@@ -1,23 +1,24 @@
 import React from "react";
-import PropTypes from "prop-types";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
 import clsx from "clsx";
-import Stepper from "@material-ui/core/Stepper";
-import Step from "@material-ui/core/Step";
-import StepLabel from "@material-ui/core/StepLabel";
-import StepConnector from "@material-ui/core/StepConnector";
-import Container from "@material-ui/core/Container";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
-import Fade from "@material-ui/core/Fade";
 import { Link } from "react-router-dom";
+import { makeStyles, withStyles } from "@material-ui/core/styles";
+import {
+  Stepper,
+  Step,
+  StepLabel,
+  StepConnector,
+  Container,
+  Button,
+  Typography,
+  Fade,
+} from "@material-ui/core/";
+import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
-import svgIcons from "../icons/icons";
 import Kubernetes from "./screens/Kubernetes";
 import MesheryOperator from "./screens/MesheryOperator";
 import AddServiceMesh from "./screens/AddServiceMesh";
 import External from "./screens/External";
+import svgIcons from "../icons/icons";
 
 const ColorlibConnector = withStyles({
   alternativeLabel: {
@@ -89,21 +90,6 @@ function ColorlibStepIcon(props) {
   );
 }
 
-ColorlibStepIcon.propTypes = {
-  /**
-   * Whether this step is active.
-   */
-  active: PropTypes.bool,
-  /**
-   * Mark the step as completed. Is passed to child components.
-   */
-  completed: PropTypes.bool,
-  /**
-   * The label displayed in the step icon.
-   */
-  icon: PropTypes.node,
-};
-
 const useStyles = makeStyles((theme) => ({
   container: {
     height: "32.5rem",
@@ -128,12 +114,14 @@ const useStyles = makeStyles((theme) => ({
       backgroundColor: "#508D8B",
     },
   },
-  buttonBack: {
-    marginRight: "1rem",
+  backButton: {
     background: "white",
     color: "lightgray",
   },
-  buttonLink: {
+  skipButton: {
+    color: "#647881",
+  },
+  linkButton: {
     textDecoration: "none",
     color: "white",
   },
@@ -150,21 +138,6 @@ const useStyles = makeStyles((theme) => ({
 
 function getSteps() {
   return ["Kubernetes", "Meshery Operator", "Service Mesh", "External"];
-}
-
-function getStepContent(step) {
-  switch (step) {
-    case 0:
-      return "Connect to Kubernetes";
-    case 1:
-      return "Connect Meshery Operator";
-    case 2:
-      return "Add Service Mesh";
-    case 3:
-      return "Connect to external";
-    default:
-      return "Unknown step";
-  }
 }
 
 const ConfigurationWizard = () => {
@@ -234,7 +207,7 @@ const ConfigurationWizard = () => {
                 </Typography>
                 <div className={classes.buttonContainer}>
                   <Button className={classes.button}>
-                    <Link className={classes.buttonLink} to="/">
+                    <Link className={classes.linkButton} to="/">
                       Done
                     </Link>
                   </Button>
@@ -248,10 +221,13 @@ const ConfigurationWizard = () => {
                 <Button
                   disabled={activeStep === 0}
                   onClick={handleBack}
-                  className={(classes.button, classes.buttonBack)}
+                  className={(classes.button, classes.backButton)}
                 >
                   Back
                 </Button>
+                {activeStep === 1 || activeStep === 2 ? (
+                  <Button onClick={handleNext} className={classes.skipButton}>Skip</Button>
+                ) : null}
                 <Button
                   variant="contained"
                   onClick={handleNext}
