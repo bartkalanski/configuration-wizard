@@ -107,11 +107,14 @@ const useStyles = makeStyles((theme) => ({
   },
   button: {
     marginRight: theme.spacing(1),
+    padding: "0.5rem 2rem",
     textDecoration: "none",
-    background: "#607D8B",
-    color: "white",
+    background: "white",
+    color: "#647881",
+    border: "1.5px solid #647881",
     "&:hover": {
-      backgroundColor: "#508D8B",
+      backgroundColor: "#647881",
+      color: "white",
     },
   },
   backButton: {
@@ -123,7 +126,6 @@ const useStyles = makeStyles((theme) => ({
   },
   linkButton: {
     textDecoration: "none",
-    color: "white",
   },
   completed: {
     textAlign: "center",
@@ -206,11 +208,13 @@ const ConfigurationWizard = () => {
                   Your configuration was successful
                 </Typography>
                 <div className={classes.buttonContainer}>
-                  <Button className={classes.button}>
-                    <Link className={classes.linkButton} to="/">
+                  <Link to="/" className={classes.linkButton}>
+                    <Button
+                      className={classes.button}
+                    >
                       Done
-                    </Link>
-                  </Button>
+                    </Button>
+                  </Link>
                 </div>
               </div>
             </Fade>
@@ -226,7 +230,9 @@ const ConfigurationWizard = () => {
                   Back
                 </Button>
                 {activeStep === 1 || activeStep === 2 ? (
-                  <Button onClick={handleNext} className={classes.skipButton}>Skip</Button>
+                  <Button onClick={handleNext} className={classes.skipButton}>
+                    Skip
+                  </Button>
                 ) : null}
                 <Button
                   variant="contained"
