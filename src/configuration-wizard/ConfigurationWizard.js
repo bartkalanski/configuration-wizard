@@ -1,94 +1,17 @@
 import React from "react";
-import clsx from "clsx";
-import { Link } from "react-router-dom";
-import { makeStyles, withStyles } from "@material-ui/core/styles";
 import {
-  Stepper,
-  Step,
-  StepLabel,
-  StepConnector,
+  makeStyles,
   Container,
   Button,
-  Typography,
   Fade,
 } from "@material-ui/core/";
-import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 
+import Stepper from "../components/Stepper";
 import Kubernetes from "./screens/Kubernetes";
 import MesheryOperator from "./screens/MesheryOperator";
 import AddServiceMesh from "./screens/AddServiceMesh";
 import External from "./screens/External";
-import svgIcons from "../icons/icons";
-
-const ColorlibConnector = withStyles({
-  alternativeLabel: {
-    top: 22,
-  },
-  active: {
-    "& $line": {
-      background: "#00B39F",
-      transition: "all 1s ease-in",
-    },
-  },
-  completed: {
-    "& $line": {
-      background: "#00B39F",
-      transition: "all 1s ease-in",
-    },
-  },
-  line: {
-    height: 3,
-    border: 0,
-    backgroundColor: "#eaeaf0",
-    borderRadius: 1,
-    transition: "all 0.5s ease-out ",
-  },
-})(StepConnector);
-
-const useColorlibStepIconStyles = makeStyles({
-  root: {
-    backgroundColor: "#ccc",
-    zIndex: 1,
-    color: "#fff",
-    width: 50,
-    height: 50,
-    display: "flex",
-    border: ".2rem solid #ccc",
-    borderRadius: "50%",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  active: {
-    background: "#fff",
-    color: "#3C494E",
-    boxShadow: "0 4px 10px 0 rgba(0,0,0,.25)",
-    border: ".2rem solid #00B39F",
-    transition: "all 0.5s ease-in",
-  },
-  completed: {
-    border: ".2rem solid #00B39F",
-    background: "#00B39F",
-    transition: "all 0.5s ease-in",
-  },
-});
-
-function ColorlibStepIcon(props) {
-  const classes = useColorlibStepIconStyles();
-  const { active, completed } = props;
-
-  const icons = svgIcons(props.completed, props.active);
-
-  return (
-    <div
-      className={clsx(classes.root, {
-        [classes.active]: active,
-        [classes.completed]: completed,
-      })}
-    >
-      {icons[String(props.icon)]}
-    </div>
-  );
-}
+import ConfigurationDone from "./screens/ConfigurationDone";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -124,18 +47,6 @@ const useStyles = makeStyles((theme) => ({
   skipButton: {
     color: "#647881",
   },
-  linkButton: {
-    textDecoration: "none",
-  },
-  completed: {
-    textAlign: "center",
-  },
-  checkCircleIcon: {
-    color: "#00B39F",
-    padding: "1rem",
-    height: "auto",
-    width: "4rem",
-  },
 }));
 
 function getSteps() {
@@ -154,10 +65,6 @@ const ConfigurationWizard = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
-
-  const handleReset = () => {
-    setActiveStep(0);
-  };
   const handleStep = (step) => {
     switch (step) {
       case 0:
@@ -175,48 +82,12 @@ const ConfigurationWizard = () => {
 
   return (
     <Container className={classes.container}>
-      <Stepper
-        alternativeLabel
-        activeStep={activeStep}
-        connector={<ColorlibConnector />}
-      >
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+      <Stepper steps={steps} activeStep={activeStep} />
       <Fade timeout={{ enter: "1500ms" }} in="true">
         <div>
           {activeStep === steps.length ? (
             <Fade timeout={{ enter: "500ms" }} in="true">
-              <div className={classes.completed}>
-                <CheckCircleIcon className={classes.checkCircleIcon} />
-                <Typography
-                  variant="h4"
-                  gutterBottom="true"
-                  className={classes.instructions}
-                >
-                  Configuration done
-                </Typography>
-                <Typography
-                  variant="subtitle1"
-                  paragraph="true"
-                  gutterBottom="true"
-                  className={classes.instructions}
-                >
-                  Your configuration was successful
-                </Typography>
-                <div className={classes.buttonContainer}>
-                  <Link to="/" className={classes.linkButton}>
-                    <Button
-                      className={classes.button}
-                    >
-                      Done
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+              <ConfigurationDone />
             </Fade>
           ) : (
             <>
