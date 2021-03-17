@@ -48,6 +48,7 @@ const useColorlibStepIconStyles = makeStyles({
     borderRadius: "50%",
     justifyContent: "center",
     alignItems: "center",
+    cursor: "pointer",
   },
   active: {
     background: "#fff",
@@ -81,7 +82,9 @@ function ColorlibStepIcon(props) {
   );
 }
 
-const Stepper = ({ activeStep, steps }) => {
+const Stepper = ({ steps, activeStep, handleUserClick }) => {
+  const handleChange = (label, steps) => handleUserClick(steps.indexOf(label));
+
   return (
     <Stepperr
       alternativeLabel
@@ -89,7 +92,10 @@ const Stepper = ({ activeStep, steps }) => {
       connector={<ColorlibConnector />}
     >
       {steps.map((label) => (
-        <Step key={label}>
+        <Step
+          key={label}
+          onClick={() => handleChange(label, steps)}
+        >
           <StepLabel StepIconComponent={ColorlibStepIcon}>{label}</StepLabel>
         </Step>
       ))}

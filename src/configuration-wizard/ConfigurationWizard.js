@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  makeStyles,
-  Container,
-  Button,
-  Fade,
-} from "@material-ui/core/";
+import { makeStyles, Container, Button, Fade } from "@material-ui/core/";
 
 import Stepper from "../components/Stepper";
 import Kubernetes from "./screens/Kubernetes";
@@ -65,6 +60,9 @@ const ConfigurationWizard = () => {
   const handleBack = () => {
     setActiveStep((prevActiveStep) => prevActiveStep - 1);
   };
+  const handleUserClick = (navStep) => {
+    setActiveStep(navStep);
+  };
   const handleStep = (step) => {
     switch (step) {
       case 0:
@@ -82,7 +80,11 @@ const ConfigurationWizard = () => {
 
   return (
     <Container className={classes.container}>
-      <Stepper steps={steps} activeStep={activeStep} />
+      <Stepper
+        steps={steps}
+        activeStep={activeStep}
+        handleUserClick={handleUserClick}
+      />
       <Fade timeout={{ enter: "1500ms" }} in="true">
         <div>
           {activeStep === steps.length ? (
