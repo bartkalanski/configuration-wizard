@@ -30,9 +30,14 @@ const useStyles = makeStyles({
   card: {
     position: "relative",
     width: "10rem",
+    minWidth: "10rem",
     border: "1px solid gray",
     borderRadius: "0.75rem",
-    margin: "1rem 2rem 5rem 2rem",
+    top: "2rem",
+    margin: "0rem 2rem 5rem 2rem",
+    ["@media (max-width:1024px)"]: { //eslint-disable-line no-useless-computed-key
+      margin: "0rem 2rem 5rem 0",
+    },
   },
   cardChecked: {
     height: "15rem",
