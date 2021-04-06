@@ -113,6 +113,7 @@ const useStyles = makeStyles({
 });
 
 const ConfigCard = ({
+  handleSwitch,
   icon,
   name,
   topInputPlaceholder,
@@ -125,6 +126,9 @@ const ConfigCard = ({
 
   const handleChange = (event) => {
     setState({ ...state, [event.target.name]: event.target.checked });
+    if (handleSwitch) {
+      handleSwitch(event.target.checked)
+    }
   };
   return (
     <Card
