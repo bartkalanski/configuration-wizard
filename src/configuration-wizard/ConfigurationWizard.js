@@ -10,7 +10,7 @@ import ConfigurationDone from "./screens/ConfigurationDone";
 
 const useStyles = makeStyles((theme) => ({
   container: {
-    height: "32.5rem",
+    minHeight: "32.5rem",
     margin: "5rem auto",
     background: "white",
     boxShadow: "lightgrey 0px 0px 10px",

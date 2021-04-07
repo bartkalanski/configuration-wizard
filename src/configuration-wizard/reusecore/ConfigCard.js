@@ -34,17 +34,18 @@ const useStyles = makeStyles({
     border: "1px solid gray",
     borderRadius: "0.75rem",
     top: "2rem",
-    margin: "0rem 2rem 5rem 2rem",
+    margin: "0rem 2rem 6rem 2rem",
     ["@media (max-width:1024px)"]: { //eslint-disable-line no-useless-computed-key
-      margin: "0rem 2rem 5rem 0",
+      margin: "0rem 2rem 6rem 0",
     },
   },
   cardChecked: {
     height: "15rem",
-    marginBottom: "0rem",
+    marginBottom: "1rem",
   },
   cardUnchecked: {
     height: "10rem",
+    //marginBottom: "1rem",
   },
   cardContent: {
     background: "red",
@@ -186,8 +187,8 @@ const ConfigCard = ({
           }
         >
           {name === "Open Service Mesh" ||
-          name === "Consul" ||
-          name === "Linkerd" ? (
+            name === "Consul" ||
+            name === "Linkerd" ? (
             <>
               <Typography className={classes.contentBottomControlPlane}>
                 Control Plane: 6{" "}
@@ -203,7 +204,7 @@ const ConfigCard = ({
               </Typography>
             </>
           ) : (
-            <>{TopInputIcon ?<TopInputIcon className={classes.topInputIcon}/> : null}
+            <>{TopInputIcon ? <TopInputIcon className={classes.topInputIcon} /> : null}
               <Input
                 placeholder={topInputPlaceholder}
                 disableUnderline="false"

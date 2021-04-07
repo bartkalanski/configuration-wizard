@@ -8,7 +8,7 @@ import ConfigCard from "../reusecore/ConfigCard";
 const useStyles = makeStyles({
   cardContainer: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
     justifyContent: "flex-start",
     padding: "2rem 6rem",
   },
