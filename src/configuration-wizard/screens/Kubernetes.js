@@ -1,5 +1,6 @@
 import React from "react";
 import { makeStyles, Container, Typography } from "@material-ui/core/";
+import BackupIcon from '@material-ui/icons/Backup';
 
 import kubernetesIcon from "../../icons/Kubernetes.svg";
 import ConfigCard from "../reusecore/ConfigCard";
@@ -40,7 +41,7 @@ const Kubernetes = ({ handleConnectToKubernetes }) => {
   return (
     <Container className={classes.cardContainer}>
       {" "}
-      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetesIcon} topInputPlaceholder="Upload" bottomInputPlaceholder="Context"/>
+      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetesIcon} topInputPlaceholder="Upload" TopInputIcon={BackupIcon} bottomInputPlaceholder="Context"/>
       <div  className={classes.infoContainer}>
         <Typography className={classes.infoContext}>Context Name</Typography>
         <Typography className={classes.infoKind}>kind-kind</Typography>

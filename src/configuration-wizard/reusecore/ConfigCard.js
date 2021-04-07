@@ -110,6 +110,18 @@ const useStyles = makeStyles({
     marginBottom: "-0.4rem",
     color: "#00B39F",
   },
+  topInputIcon: {
+    position: "absolute",
+    fontSize: "1.25rem",
+    color: "lightgray",
+    bottom: "3rem",
+    left: "7.5rem",
+    cursor: "pointer",
+    zIndex: "99999",
+    "&:hover": {
+      color: 'grey'
+    }
+  }
 });
 
 const ConfigCard = ({
@@ -117,6 +129,7 @@ const ConfigCard = ({
   icon,
   name,
   topInputPlaceholder,
+  TopInputIcon,
   bottomInputPlaceholder,
 }) => {
   const [state, setState] = React.useState({
@@ -190,7 +203,7 @@ const ConfigCard = ({
               </Typography>
             </>
           ) : (
-            <>
+            <>{TopInputIcon ?<TopInputIcon className={classes.topInputIcon}/> : null}
               <Input
                 placeholder={topInputPlaceholder}
                 disableUnderline="false"
