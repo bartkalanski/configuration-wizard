@@ -3,6 +3,7 @@ import {
   makeStyles,
   Container,
   Fade,
+  Typography
 } from "@material-ui/core/";
 
 import mesheryOperatorIcon from "../../icons/meshery-operator-dark.svg";
@@ -15,6 +16,19 @@ const useStyles = makeStyles({
     justifyContent: "flex-start",
     padding: "2rem 6rem",
   },
+  infoContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    marginTop: "2rem",
+    marginLeft: "1rem",
+  },
+  infoContext: {
+    fontSize: ".9rem"
+  },
+  infoKind: {
+    fontSize: ".75rem",
+    color: "#CACACA",
+  },
 });
 
 const MesheryOperator = () => {
@@ -24,7 +38,11 @@ const MesheryOperator = () => {
     <Fade timeout={{ enter: "500ms" }} in="true">
       <Container className={classes.cardContainer}>
         {" "}
-        <ConfigCard name="Meshery Operator" icon={mesheryOperatorIcon} topInputPlaceholder="" bottomInputPlaceholder=""/>
+        <ConfigCard name="Meshery Operator" icon={mesheryOperatorIcon} topInputPlaceholder="URL" bottomInputPlaceholder="" />
+        <div className={classes.infoContainer}>
+          <Typography className={classes.infoContext}>Context Name</Typography>
+          <Typography className={classes.infoKind}>kind-kind</Typography>
+        </div>
       </Container>
     </Fade>
   );

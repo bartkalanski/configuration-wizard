@@ -68,7 +68,7 @@ const ConfigurationWizard = () => {
   const handleStep = (step) => {
     switch (step) {
       case 0:
-        return <Kubernetes handleConnectToKubernetes={handleConnectToKubernetes}/>;
+        return <Kubernetes handleConnectToKubernetes={handleConnectToKubernetes} />;
       case 1:
         return <MesheryOperator />;
       case 2:
