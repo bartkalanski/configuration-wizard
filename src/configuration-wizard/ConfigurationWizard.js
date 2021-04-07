@@ -51,6 +51,7 @@ function getSteps() {
 const ConfigurationWizard = () => {
   const classes = useStyles();
   const [activeStep, setActiveStep] = React.useState(0);
+  const [kubernetesConnected, setKubernetesConnected] = React.useState(false);
   const steps = getSteps();
 
   const handleNext = () => {
@@ -63,10 +64,11 @@ const ConfigurationWizard = () => {
   const handleUserClick = (navStep) => {
     setActiveStep(navStep);
   };
+  const handleConnectToKubernetes = (checked) => setKubernetesConnected(checked)
   const handleStep = (step) => {
     switch (step) {
       case 0:
-        return <Kubernetes />;
+        return <Kubernetes handleConnectToKubernetes={handleConnectToKubernetes}/>;
       case 1:
         return <MesheryOperator />;
       case 2:
@@ -108,6 +110,7 @@ const ConfigurationWizard = () => {
                   </Button>
                 ) : null}
                 <Button
+                  disabled={activeStep === 0 && !kubernetesConnected}
                   variant="contained"
                   onClick={handleNext}
                   className={classes.button}

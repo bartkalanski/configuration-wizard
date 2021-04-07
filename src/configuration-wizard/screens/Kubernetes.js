@@ -26,11 +26,16 @@ const useStyles = makeStyles({
   },
 });
 
-const Kubernetes = () => {
+const Kubernetes = ({ handleConnectToKubernetes }) => {
   const [state, setState] = React.useState(false);
   const classes = useStyles();
 
-  const handleSwitch = (checked) => setState(checked)
+  const handleSwitch = (checked) => {
+    setState(checked)
+    if (handleConnectToKubernetes) {
+      handleConnectToKubernetes(checked)
+    }
+  }
 
   return (
     <Container className={classes.cardContainer}>
