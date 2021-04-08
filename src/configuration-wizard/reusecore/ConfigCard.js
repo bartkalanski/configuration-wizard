@@ -10,7 +10,6 @@ import {
   Typography,
 } from "@material-ui/core/";
 import TimerIcon from "@material-ui/icons/Timer";
-import FiberManualRecordRoundedIcon from "@material-ui/icons/FiberManualRecordRounded";
 
 const MeshySwitch = withStyles({
   switchBase: {
@@ -107,10 +106,6 @@ const useStyles = makeStyles({
     fontSize: "0.75rem",
     padding: "0.50rem",
   },
-  contentBottomIcon: {
-    marginBottom: "-0.4rem",
-    color: "#00B39F",
-  },
   topInputIcon: {
     position: "absolute",
     fontSize: "1.25rem",
@@ -133,21 +128,19 @@ const ConfigCard = ({
   TopInputIcon,
   bottomInputPlaceholder,
 }) => {
-  const [state, setState] = React.useState({
-    checked: false,
-  });
+  const [state, setState] = React.useState(false);
   const classes = useStyles();
 
-  const handleChange = (event) => {
-    setState({ ...state, [event.target.name]: event.target.checked });
+  const handleChange = (e) => {
+    setState(e.target.checked);
     if (handleSwitch) {
-      handleSwitch(event.target.checked)
+      handleSwitch(e.target.name, e.target.checked);
     }
   };
   return (
     <Card
       className={
-        state.checked
+        state
           ? `${classes.card} ${classes.cardChecked}`
           : `${classes.card} ${classes.cardUnchecked}`
       }
@@ -156,12 +149,12 @@ const ConfigCard = ({
       <CardContent className={classes.cardContent}>
         <div
           className={
-            state.checked ? classes.contentTop : classes.contentTopUnchecked
+            state ? classes.contentTop : classes.contentTopUnchecked
           }
         >
           <FormControlLabel
             className={classes.contentTopSwitcher}
-            control={<MeshySwitch checked={state.checked} name="checked" />}
+            control={<MeshySwitch checked={state} name={name} />}
             onChange={handleChange}
           />
           <div className={classes.iconContainer}>
@@ -181,29 +174,14 @@ const ConfigCard = ({
         </div>
         <div
           className={
-            state.checked
+            state
               ? classes.contentBottomChecked
               : classes.contentBottomUnchecked
           }
         >
           {name === "Open Service Mesh" ||
             name === "Consul" ||
-            name === "Linkerd" ? (
-            <>
-              <Typography className={classes.contentBottomControlPlane}>
-                Control Plane: 6{" "}
-                <FiberManualRecordRoundedIcon
-                  className={classes.contentBottomIcon}
-                />
-              </Typography>
-              <Typography className={classes.contentBottomDataPlane}>
-                Data Plane: 18
-                <FiberManualRecordRoundedIcon
-                  className={classes.contentBottomIcon}
-                />
-              </Typography>
-            </>
-          ) : (
+            name === "Linkerd" ? null : (
             <>{TopInputIcon ? <TopInputIcon className={classes.topInputIcon} /> : null}
               <Input
                 placeholder={topInputPlaceholder}
