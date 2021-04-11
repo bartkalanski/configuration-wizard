@@ -7,8 +7,10 @@ import {
 } from "@material-ui/core/";
 import FiberManualRecordRoundedIcon from "@material-ui/icons/FiberManualRecordRounded";
 
-
 import ConfigCard from "../reusecore/ConfigCard";
+import consulIcon from '../../icons/consulIcon.svg'
+import linkerdIcon from '../../icons/linkerdIcon.svg'
+import openServiceMeshIcon from '../../icons/openServiceMeshIcon.svg'
 
 const useStyles = makeStyles({
   contentContainer: {
@@ -46,7 +48,7 @@ const ServiceMesh = () => {
     <Fade timeout={{ enter: "500ms" }} in="true">
       <Container className={classes.contentContainer}>
         <div className={classes.dataContainer}>
-          <ConfigCard handleSwitch={handleSwitch} name="openServiceMesh" icon="timer" />
+          <ConfigCard handleSwitch={handleSwitch} name="openServiceMesh" icon={openServiceMeshIcon} />
           {!state.openServiceMesh ? null : (<div className={classes.planeContainer}>
             <Typography>
               Control Plane: 6{" "}
@@ -63,7 +65,7 @@ const ServiceMesh = () => {
           </div>)}
         </div>
         <div className={classes.dataContainer}>
-          <ConfigCard handleSwitch={handleSwitch} name="consul" icon="timer" />
+          <ConfigCard handleSwitch={handleSwitch} name="consul" icon={consulIcon} />
           {!state.consul ? null : (<div className={classes.planeContainer}>
             <Typography>
               Control Plane: 3{" "}
@@ -80,7 +82,7 @@ const ServiceMesh = () => {
           </div>)}
         </div>
         <div className={classes.dataContainer}>
-          <ConfigCard handleSwitch={handleSwitch} name="linkerd" icon="timer" />
+          <ConfigCard handleSwitch={handleSwitch} name="linkerd" icon={linkerdIcon} />
           {!state.linkerd ? null : (<div className={classes.planeContainer}>
             <Typography>
               Control Plane: 1{" "}
