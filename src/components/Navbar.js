@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@material-ui/core/";
 import BuildIcon from "@material-ui/icons/Build";
-import PopUp from './PopUp'
+import ConfigurationWizardModal from './ConfigurationWizardModal'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,7 +53,7 @@ const Navbar = () => {
             </Typography>
           </Link>
           <BuildIcon onClick={handleOpen} className={classes.buildIcon} />
-          <PopUp open={open} handleClose={handleClose} />
+          <ConfigurationWizardModal open={open} handleClose={handleClose} />
         </Toolbar>
       </AppBar>
     </div>

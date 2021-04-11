@@ -6,7 +6,7 @@ import {
   Typography
 } from "@material-ui/core/";
 
-import mesheryOperatorIcon from "../../icons/meshery-operator-dark.svg";
+import mesheryOperatorIcon from "../../icons/mesheryOperator.svg";
 import ConfigCard from "../reusecore/ConfigCard";
 
 const useStyles = makeStyles({

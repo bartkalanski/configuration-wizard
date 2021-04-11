@@ -4,7 +4,7 @@ import { makeStyles, Container, Button, Fade } from "@material-ui/core/";
 import Stepper from "../components/Stepper";
 import KubernetesScreen from "./screens/KubernetesScreen";
 import MesheryOperatorScreen from "./screens/MesheryOperatorScreen";
-import AddServiceMeshScreen from "./screens/AddServiceMeshScreen";
+import ServiceMeshScreen from "./screens/ServiceMeshScreen";
 import ExternalScreen from "./screens/ExternalScreen";
 import ConfigurationDoneScreen from "./screens/ConfigurationDoneScreen";
 
@@ -72,7 +72,7 @@ const ConfigurationWizard = () => {
       case 1:
         return <MesheryOperatorScreen />;
       case 2:
-        return <AddServiceMeshScreen />;
+        return <ServiceMeshScreen />;
       case 3:
         return <ExternalScreen />;
       default:

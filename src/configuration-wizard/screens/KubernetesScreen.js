@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles, Container, Typography } from "@material-ui/core/";
 import BackupIcon from '@material-ui/icons/Backup';
 
-import kubernetesIcon from "../../icons/Kubernetes.svg";
+import kubernetesIcon from "../../icons/kubernetes.svg";
 import ConfigCard from "../reusecore/ConfigCard";
 
 const useStyles = makeStyles({
