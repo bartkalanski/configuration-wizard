@@ -2,11 +2,11 @@ import React from "react";
 import { makeStyles, Container, Button, Fade } from "@material-ui/core/";
 
 import Stepper from "../components/Stepper";
-import Kubernetes from "./screens/Kubernetes";
-import MesheryOperator from "./screens/MesheryOperator";
-import AddServiceMesh from "./screens/AddServiceMesh";
-import External from "./screens/External";
-import ConfigurationDone from "./screens/ConfigurationDone";
+import KubernetesScreen from "./screens/KubernetesScreen";
+import MesheryOperatorScreen from "./screens/MesheryOperatorScreen";
+import AddServiceMeshScreen from "./screens/AddServiceMeshScreen";
+import ExternalScreen from "./screens/ExternalScreen";
+import ConfigurationDoneScreen from "./screens/ConfigurationDoneScreen";
 
 const useStyles = makeStyles((theme) => ({
   container: {
@@ -68,13 +68,13 @@ const ConfigurationWizard = () => {
   const handleStep = (step) => {
     switch (step) {
       case 0:
-        return <Kubernetes handleConnectToKubernetes={handleConnectToKubernetes} />;
+        return <KubernetesScreen handleConnectToKubernetes={handleConnectToKubernetes} />;
       case 1:
-        return <MesheryOperator />;
+        return <MesheryOperatorScreen />;
       case 2:
-        return <AddServiceMesh />;
+        return <AddServiceMeshScreen />;
       case 3:
-        return <External />;
+        return <ExternalScreen />;
       default:
         return null;
     }
@@ -91,7 +91,7 @@ const ConfigurationWizard = () => {
         <div>
           {activeStep === steps.length ? (
             <Fade timeout={{ enter: "500ms" }} in="true">
-              <ConfigurationDone />
+              <ConfigurationDoneScreen />
             </Fade>
           ) : (
             <>
