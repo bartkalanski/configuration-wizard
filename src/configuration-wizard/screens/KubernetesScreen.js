@@ -15,8 +15,12 @@ const useStyles = makeStyles({
   infoContainer: {
     display: 'flex',
     flexDirection: 'column',
-    marginTop: "2rem",
-    marginLeft: "1rem",
+    position: 'relative',
+    left: '15rem',
+    width: '20rem',
+    padding: '2rem',
+    marginTop: '2rem',
+    boxShadow: '0px 1px 6px 1px rgba(0,0,0,0.75)',
   },
   infoContext: {
     fontSize: ".9rem"
@@ -41,12 +45,12 @@ const Kubernetes = ({ handleConnectToKubernetes }) => {
   return (
     <Container className={classes.cardContainer}>
       {" "}
-      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetesIcon} topInputPlaceholder="Upload" TopInputIcon={BackupIcon} bottomInputPlaceholder="Context"/>
-      <div  className={classes.infoContainer}>
+      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetesIcon} topInputPlaceholder="Upload" TopInputIcon={BackupIcon} bottomInputPlaceholder="Context" />
+      {!state ? null : (<div className={classes.infoContainer}>
         <Typography className={classes.infoContext}>Context Name</Typography>
         <Typography className={classes.infoKind}>kind-kind</Typography>
-        <Typography>{state ? "Kubernetes Selected": null }</Typography>
-      </div>
+        <Typography>{state ? "Kubernetes Selected" : null}</Typography>
+      </div>)}
     </Container>
   );
 };
