@@ -13,14 +13,24 @@ const useStyles = makeStyles({
     padding: "2rem 6rem",
   },
   infoContainer: {
+    position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    position: 'relative',
     left: '15rem',
     width: '20rem',
-    padding: '2rem',
+    padding: '5rem 2rem',
     marginTop: '2rem',
     boxShadow: '0px 1px 6px 1px rgba(0,0,0,0.75)',
+  },
+  infoStatus: {
+    position: 'absolute',
+    bottom: '10.50rem',
+    right: '14rem',
+    color: '#647881',
+    background: '#F1F3F4',
+    padding: '.5rem 5rem .75rem 1.5rem',
+    borderRadius: '0.25rem',
+    fontSize: ".8rem"
   },
   infoContext: {
     fontSize: ".9rem"
@@ -45,11 +55,13 @@ const Kubernetes = ({ handleConnectToKubernetes }) => {
   return (
     <Container className={classes.cardContainer}>
       {" "}
-      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetesIcon} topInputPlaceholder="Upload" TopInputIcon={BackupIcon} bottomInputPlaceholder="Context" />
+      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetesIcon} topInputPlaceholder="Upload Kubeconfig" TopInputIcon={BackupIcon} bottomInputPlaceholder="Current-Context" />
       {!state ? null : (<div className={classes.infoContainer}>
-        <Typography className={classes.infoContext}>Context Name</Typography>
-        <Typography className={classes.infoKind}>kind-kind</Typography>
-        <Typography>{state ? "Kubernetes Selected" : null}</Typography>
+        <Typography className={classes.infoStatus}>Status</Typography>
+        <Typography className={classes.infoContext}>Current-Context: bob-us-east</Typography>
+        <Typography className={classes.infoContext}>Clust</Typography>
+        <Typography className={classes.infoContext}>Current Context: </Typography>
+        {/* <Typography>{state ? "Kubernetes Selected" : null}</Typography> */}
       </div>)}
     </Container>
   );
