@@ -7,16 +7,16 @@ import ConfigCard from "../reusecore/ConfigCard";
 
 const useStyles = makeStyles({
   cardContainer: {
+    position: 'relative',
     display: "flex",
     flexDirection: "row",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
     padding: "2rem 6rem",
   },
   infoContainer: {
     position: 'relative',
     display: 'flex',
     flexDirection: 'column',
-    left: '15rem',
     width: '20rem',
     padding: '5rem 2rem',
     marginTop: '2rem',
@@ -25,7 +25,7 @@ const useStyles = makeStyles({
   infoStatus: {
     position: 'absolute',
     bottom: '10.50rem',
-    right: '14rem',
+    right: '10rem',
     color: '#647881',
     background: '#F1F3F4',
     padding: '.5rem 5rem .75rem 1.5rem',
