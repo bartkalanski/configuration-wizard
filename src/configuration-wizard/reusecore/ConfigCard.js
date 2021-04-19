@@ -134,7 +134,7 @@ const ConfigCard = ({
   const handleChange = (e) => {
     setState(e.target.checked);
     if (handleSwitch) {
-      handleSwitch(e.target.name, e.target.checked);
+      handleSwitch(e.target.checked);
     }
   };
   return (
