@@ -15,8 +15,8 @@ import openServiceMeshIcon from '../../icons/openServiceMeshIcon.svg'
 const useStyles = makeStyles({
   contentContainer: {
     display: "flex",
-    flexDirection: "column",
-    justifyContent: "flex-start",
+    flexDirection: "row",
+    justifyContent: "space-evenly",
     padding: "2rem 6rem",
   },
   dataContainer: {
