@@ -28,7 +28,7 @@ const MeshySwitch = withStyles({
 const useStyles = makeStyles({
   card: {
     position: "relative",
-    width: "10rem",
+    width: "12rem",
     minWidth: "10rem",
     border: "1px solid gray",
     borderRadius: "0.75rem",
@@ -71,12 +71,13 @@ const useStyles = makeStyles({
     alignItems: "center",
   },
   contentTopSwitcher: {
-    marginLeft: "0.5rem",
+    paddingLeft: "2rem",
   },
   iconContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
+    marginLeft: "1rem",
   },
   cardIcon: {
     width: "3rem",
@@ -84,6 +85,7 @@ const useStyles = makeStyles({
   cardIconText: {
     color: "white",
     fontSize: "0.85rem",
+    textAlign: "center",
   },
   contentBottomChecked: {
     background: "white",
@@ -152,11 +154,6 @@ const ConfigCard = ({
             state ? classes.contentTop : classes.contentTopUnchecked
           }
         >
-          <FormControlLabel
-            className={classes.contentTopSwitcher}
-            control={<MeshySwitch checked={state} name={name} />}
-            onChange={handleChange}
-          />
           <div className={classes.iconContainer}>
             {icon === "timer" ? (
               <TimerIcon />
@@ -167,10 +164,19 @@ const ConfigCard = ({
                 alt={`${name} icon`}
               />
             )}
-            <Typography className={classes.cardIconText} color="primary">
+            {name === 'openServiceMesh' ? <Typography className={classes.cardIconText} color="primary">
+              Open Service <br />Mesh
+              </Typography> : <Typography className={classes.cardIconText} color="primary">
               {name}
             </Typography>
+            }
+
           </div>
+          <FormControlLabel
+            className={classes.contentTopSwitcher}
+            control={<MeshySwitch checked={state} name={name} />}
+            onChange={handleChange}
+          />
         </div>
         <div
           className={

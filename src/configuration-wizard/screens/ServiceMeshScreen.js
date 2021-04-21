@@ -17,15 +17,18 @@ const useStyles = makeStyles({
     display: "flex",
     flexDirection: "row",
     justifyContent: "space-evenly",
-    padding: "2rem 6rem",
+    padding: "2rem 6rem 16rem 6rem",
   },
   dataContainer: {
     display: "flex",
-    flexDirection: "row",
+    flexDirection: "column",
   },
   planeContainer: {
-    marginTop: "2rem",
-    marginLeft: "1rem",
+    position: 'relative',
+    width: '10rem',
+    padding: '3rem 1rem',
+    marginTop: '2rem',
+    boxShadow: '0px 1px 6px 1px rgba(0,0,0,0.75)',
   },
   planeIcon: {
     marginBottom: "-0.4rem",
@@ -49,7 +52,7 @@ const ServiceMesh = () => {
       <Container className={classes.contentContainer}>
         <div className={classes.dataContainer}>
           <ConfigCard handleSwitch={handleSwitch} name="openServiceMesh" icon={openServiceMeshIcon} />
-          {!state.openServiceMesh ? null : (<div className={classes.planeContainer}>
+          <div className={classes.planeContainer}>
             <Typography>
               Control Plane: 6{" "}
               <FiberManualRecordRoundedIcon
@@ -62,7 +65,7 @@ const ServiceMesh = () => {
                 className={classes.planeIcon}
               />
             </Typography>
-          </div>)}
+          </div>
         </div>
         <div className={classes.dataContainer}>
           <ConfigCard handleSwitch={handleSwitch} name="consul" icon={consulIcon} />
