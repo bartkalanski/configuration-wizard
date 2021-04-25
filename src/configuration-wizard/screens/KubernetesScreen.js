@@ -2,7 +2,7 @@ import React from "react";
 import { makeStyles, Container, Typography } from "@material-ui/core/";
 import BackupIcon from '@material-ui/icons/Backup';
 
-import kubernetesIcon from "../../icons/kubernetes.svg"
+import kubernetes from "../../icons/kubernetes.svg"
 import ConfigCard from "../reusecore/ConfigCard";
 
 const useStyles = makeStyles({
@@ -55,7 +55,7 @@ const Kubernetes = ({ handleConnectToKubernetes }) => {
   return (
     <Container className={classes.cardContainer}>
       {" "}
-      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetesIcon} topInputPlaceholder="Upload Kubeconfig" TopInputIcon={BackupIcon} bottomInputPlaceholder="Current-Context" />
+      <ConfigCard handleSwitch={handleSwitch} name="Kubernetes" icon={kubernetes} topInputPlaceholder="Upload Kubeconfig" TopInputIcon={BackupIcon} bottomInputPlaceholder="Current-Context" />
       {!state ? null : (<div className={classes.infoContainer}>
         <Typography className={classes.infoStatus}>Status</Typography>
         <Typography className={classes.infoContext}>Current-Context: bob-us-east</Typography>
