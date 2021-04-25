@@ -61,7 +61,6 @@ const Kubernetes = ({ handleConnectToKubernetes }) => {
         <Typography className={classes.infoContext}>Current-Context: bob-us-east</Typography>
         <Typography className={classes.infoContext}>Clust</Typography>
         <Typography className={classes.infoContext}>Current Context: </Typography>
-        {/* <Typography>{state ? "Kubernetes Selected" : null}</Typography> */}
       </div>)}
     </Container>
   );
