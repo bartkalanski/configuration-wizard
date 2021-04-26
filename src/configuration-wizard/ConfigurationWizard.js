@@ -24,6 +24,7 @@ const useStyles = makeStyles((theme) => ({
     marginRight: "11.5rem",
   },
   button: {
+    boxContent: "border-box",
     marginRight: theme.spacing(1),
     padding: "0.5rem 2rem",
     textDecoration: "none",
@@ -36,8 +37,10 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   backButton: {
-    background: "white",
-    color: "lightgray",
+    marginRight: theme.spacing(1),
+    padding: "0.5rem 2rem",
+    background: "#EFEFEF",
+    color: "#607D8B",
   },
   skipButton: {
     color: "#647881",
@@ -97,18 +100,20 @@ const ConfigurationWizard = () => {
             <>
               <div>{handleStep(activeStep)}</div>
               <div className={classes.buttonContainer}>
-                <Button
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  className={(classes.button, classes.backButton)}
-                >
-                  Back
-                </Button>
-                {activeStep === 1 || activeStep === 2 ? (
+                {activeStep !== 2 ? null : (
                   <Button onClick={handleNext} className={classes.skipButton}>
                     Skip
                   </Button>
-                ) : null}
+                )}
+                {activeStep === 0 ? null : (
+                  <Button
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    className={(classes.button, classes.backButton)}
+                  >
+                    Back
+                  </Button>
+                )}
                 <Button
                   disabled={activeStep === 0 && !kubernetesConnected}
                   variant="contained"

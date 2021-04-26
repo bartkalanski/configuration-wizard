@@ -24,8 +24,9 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     justifyContent: 'space-between',
     width: '20rem',
+    height: '15rem',
     padding: '2rem 2rem',
-    marginTop: '2rem',
+    marginRight: '3rem',
     boxShadow: '0px 1px 6px 1px rgba(0,0,0,0.75)',
   },
   infoContext: {
@@ -62,7 +63,7 @@ const MesheryOperator = () => {
     <Fade timeout={{ enter: "500ms" }} in="true">
       <Container className={classes.cardContainer}>
         {" "}
-        <ConfigCard handleSwitch={handleSwitch} name="Meshery Operator" icon={mesheryOperatorIcon} topInputPlaceholder="URL" bottomInputPlaceholder="" />
+        <ConfigCard handleSwitch={handleSwitch} name="Meshery Operator" icon={mesheryOperatorIcon} topInputPlaceholder="" bottomInputPlaceholder="" />
         {!state ? null : (
           <>
             <div className={classes.infoContainer}>
