@@ -86,6 +86,9 @@ const useStyles = makeStyles({
     color: "white",
     fontSize: "0.85rem",
     textAlign: "center",
+    "&:first-letter":{
+      textTransform:"capitalize",
+  },
   },
   contentBottomChecked: {
     background: "white",
@@ -136,7 +139,7 @@ const ConfigCard = ({
   const handleChange = (e) => {
     setState(e.target.checked);
     if (handleSwitch) {
-      handleSwitch(e.target.checked);
+      handleSwitch(e.target.name, e.target.checked);
     }
   };
   return (

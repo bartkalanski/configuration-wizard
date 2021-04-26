@@ -100,11 +100,11 @@ const ConfigurationWizard = () => {
             <>
               <div>{handleStep(activeStep)}</div>
               <div className={classes.buttonContainer}>
-                {activeStep !== 2 ? null : (
+                {activeStep === 2 || activeStep === 3 ? (
                   <Button onClick={handleNext} className={classes.skipButton}>
                     Skip
                   </Button>
-                )}
+                ) : null }
                 {activeStep === 0 ? null : (
                   <Button
                     disabled={activeStep === 0}

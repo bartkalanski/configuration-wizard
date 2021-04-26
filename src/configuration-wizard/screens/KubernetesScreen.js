@@ -45,7 +45,7 @@ const Kubernetes = ({ handleConnectToKubernetes }) => {
   const [state, setState] = React.useState(false);
   const classes = useStyles();
 
-  const handleSwitch = (checked) => {
+  const handleSwitch = (name, checked) => {
     setState(checked)
     if (handleConnectToKubernetes) {
       handleConnectToKubernetes(checked)

@@ -54,7 +54,7 @@ const MesheryOperator = () => {
   const [state, setState] = React.useState(false);
 
 
-  const handleSwitch = (checked) => {
+  const handleSwitch = (name, checked) => {
     setState(checked)
   }
 
