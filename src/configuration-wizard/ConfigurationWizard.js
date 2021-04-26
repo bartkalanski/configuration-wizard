@@ -94,7 +94,7 @@ const ConfigurationWizard = () => {
         <div>
           {activeStep === steps.length ? (
             <Fade timeout={{ enter: "500ms" }} in="true">
-              <ConfigurationDoneScreen />
+              <ConfigurationDoneScreen handleUserClick={handleUserClick}/>
             </Fade>
           ) : (
             <>
