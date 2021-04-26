@@ -14,6 +14,12 @@ const useStyles = makeStyles({
     height: "35rem",
     padding: "2rem 6rem",
   },
+  cardContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignContent: "center",
+    marginRight: "2rem",
+  },
   infoContainer: {
     boxSizing: "border-box",
     position: 'relative',
@@ -48,22 +54,24 @@ const External = () => {
 
 
   const handleSwitch = (name, checked) => {
-    setState({...state, 
-      [name]:checked})
+    setState({
+      ...state,
+      [name]: checked
+    })
   }
 
   return (
     <Fade timeout={{ enter: "500ms" }} in="true">
       <Container className={classes.container}>
-        <div>
-        <ConfigCard name="grafana" icon={grafanaIcon} topInputPlaceholder="URL" bottomInputPlaceholder="API Key" handleSwitch={handleSwitch}/>
-        {state.grafana ? (
-        <div className={classes.infoContainer}><Typography className={classes.infoContext}>Context</Typography></div>)
-        : null}
+        <div className={classes.cardContainer}>
+          <ConfigCard name="grafana" icon={grafanaIcon} topInputPlaceholder="URL" bottomInputPlaceholder="API Key" handleSwitch={handleSwitch} />
+          {state.grafana ? (
+            <div className={classes.infoContainer}><Typography className={classes.infoContext}>Context</Typography></div>)
+            : null}
         </div>
-        <div>
-        <ConfigCard name="prometheus" icon={prometheusIcon} topInputPlaceholder="" bottomInputPlaceholder="" handleSwitch={handleSwitch}/>
-        {state.prometheus ? (<div className={classes.infoContainer}><Typography className={classes.infoContext}>Context</Typography></div>): null}
+        <div className={classes.cardContainer}>
+          <ConfigCard name="prometheus" icon={prometheusIcon} topInputPlaceholder="" bottomInputPlaceholder="" handleSwitch={handleSwitch} />
+          {state.prometheus ? (<div className={classes.infoContainer}><Typography className={classes.infoContext}>Context</Typography></div>) : null}
         </div>
         <Button className={classes.settingsButton}>Advanced Settings</Button>
       </Container>

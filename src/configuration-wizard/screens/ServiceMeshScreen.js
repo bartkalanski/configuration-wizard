@@ -24,6 +24,8 @@ const useStyles = makeStyles({
   dataContainer: {
     display: "flex",
     flexDirection: "column",
+    alignContent: "center",
+    marginRight: "1rem",
   },
   settingsButton: {
     position: 'absolute',

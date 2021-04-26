@@ -33,9 +33,9 @@ const useStyles = makeStyles({
     border: "1px solid gray",
     borderRadius: "0.75rem",
     top: "2rem",
-    margin: "0rem 2rem 6rem 2rem",
+    margin: "0rem 0rem 6rem 0rem",
     ["@media (max-width:1024px)"]: { //eslint-disable-line no-useless-computed-key
-      margin: "0rem 2rem 6rem 0",
+      margin: "0rem 0rem 6rem 0",
     },
   },
   cardChecked: {
