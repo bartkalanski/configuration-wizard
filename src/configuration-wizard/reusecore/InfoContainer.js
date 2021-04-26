@@ -14,6 +14,7 @@ const useStyles = makeStyles({
         width: '10rem',
         height: '6rem',
         padding: '1rem 1rem',
+        margin: "0rem auto",
         boxShadow: '0px 1px 6px 1px rgba(0,0,0,0.75)',
     },
     infoContext: {

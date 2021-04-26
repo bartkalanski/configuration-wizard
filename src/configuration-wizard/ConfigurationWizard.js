@@ -68,6 +68,7 @@ const ConfigurationWizard = () => {
     setActiveStep(navStep);
   };
   const handleConnectToKubernetes = (checked) => setKubernetesConnected(checked)
+  
   const handleStep = (step) => {
     switch (step) {
       case 0:

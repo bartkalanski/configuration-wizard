@@ -44,7 +44,6 @@ const useStyles = makeStyles({
   },
   cardUnchecked: {
     height: "10rem",
-    //marginBottom: "1rem",
   },
   cardContent: {
     background: "red",
@@ -86,9 +85,9 @@ const useStyles = makeStyles({
     color: "white",
     fontSize: "0.85rem",
     textAlign: "center",
-    "&:first-letter":{
-      textTransform:"capitalize",
-  },
+    "&:first-letter": {
+      textTransform: "capitalize",
+    },
   },
   contentBottomChecked: {
     background: "white",
@@ -158,15 +157,11 @@ const ConfigCard = ({
           }
         >
           <div className={classes.iconContainer}>
-            {icon === "timer" ? (
-              <TimerIcon />
-            ) : (
               <img
                 className={classes.cardIcon}
                 src={icon}
                 alt={`${name} icon`}
               />
-            )}
             {name === 'openServiceMesh' ? <Typography className={classes.cardIconText} color="primary">
               Open Service <br />Mesh
               </Typography> : <Typography className={classes.cardIconText} color="primary">
@@ -188,22 +183,18 @@ const ConfigCard = ({
               : classes.contentBottomUnchecked
           }
         >
-          {name === "Open Service Mesh" ||
-            name === "Consul" ||
-            name === "Linkerd" ? null : (
-            <>{TopInputIcon ? <TopInputIcon className={classes.topInputIcon} /> : null}
-              <Input
-                placeholder={topInputPlaceholder}
-                disableUnderline="false"
-                className={classes.contentBottomInput}
-              ></Input>
-              <Input
-                placeholder={bottomInputPlaceholder}
-                disableUnderline="false"
-                className={classes.contentBottomInput}
-              ></Input>
-            </>
-          )}
+          <>{TopInputIcon ? <TopInputIcon className={classes.topInputIcon} /> : null}
+            <Input
+              placeholder={topInputPlaceholder}
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
+            <Input
+              placeholder={bottomInputPlaceholder}
+              disableUnderline="false"
+              className={classes.contentBottomInput}
+            ></Input>
+          </>
         </div>
       </CardContent>
     </Card>
