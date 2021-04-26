@@ -113,7 +113,7 @@ const useStyles = makeStyles({
     fontSize: "1.25rem",
     color: "lightgray",
     bottom: "3rem",
-    left: "8rem",
+    left: "9rem",
     cursor: "pointer",
     zIndex: "99999",
     "&:hover": {
