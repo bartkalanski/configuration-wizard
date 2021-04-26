@@ -3,37 +3,38 @@ import {
   makeStyles,
   Container,
   Fade,
-  Typography,
+  Button
 } from "@material-ui/core/";
-import FiberManualRecordRoundedIcon from "@material-ui/icons/FiberManualRecordRounded";
 
 import ConfigCard from "../reusecore/ConfigCard";
 import consulIcon from '../../icons/consulIcon.svg'
 import linkerdIcon from '../../icons/linkerdIcon.svg'
 import openServiceMeshIcon from '../../icons/openServiceMeshIcon.svg'
+import InfoContainer from "../reusecore/InfoContainer"
 
 const useStyles = makeStyles({
   contentContainer: {
+    position: "relative",
     display: "flex",
     flexDirection: "row",
+    height: "32.5rem",
     justifyContent: "space-evenly",
-    padding: "2rem 6rem 16rem 6rem",
+    padding: "2rem 6rem 0rem 6rem",
   },
   dataContainer: {
     display: "flex",
     flexDirection: "column",
   },
-  planeContainer: {
-    position: 'relative',
-    width: '10rem',
-    padding: '3rem 1rem',
-    marginTop: '2rem',
-    boxShadow: '0px 1px 6px 1px rgba(0,0,0,0.75)',
-  },
-  planeIcon: {
-    marginBottom: "-0.4rem",
-    color: "#00B39F",
-  },
+  settingsButton: {
+    position: 'absolute',
+    bottom: "-2.5rem",
+    left: '1rem',
+    color: "#647881",
+    border: "1px solid #647881",
+    borderRadius: '.8rem',
+    fontSize: '.8rem',
+    fontWeight: '400',
+  }
 });
 
 const ServiceMesh = () => {
@@ -51,56 +52,24 @@ const ServiceMesh = () => {
     <Fade timeout={{ enter: "500ms" }} in="true">
       <Container className={classes.contentContainer}>
         <div className={classes.dataContainer}>
-          <ConfigCard handleSwitch={handleSwitch} name="openServiceMesh" icon={openServiceMeshIcon} />
-          <div className={classes.planeContainer}>
-            <Typography>
-              Control Plane: 6{" "}
-              <FiberManualRecordRoundedIcon
-                className={classes.planeIcon}
-              />
-            </Typography>
-            <Typography>
-              Data Plane: 18
-                <FiberManualRecordRoundedIcon
-                className={classes.planeIcon}
-              />
-            </Typography>
-          </div>
+          <ConfigCard handleSwitch={handleSwitch} name="openServiceMesh" icon={openServiceMeshIcon} topInputPlaceholder="URL" bottomInputPlaceholder="Context"/>
+          {!state.openServiceMesh ? null : (
+          <InfoContainer controlPlane="1" dataPlane="4"/>
+          )}
         </div>
         <div className={classes.dataContainer}>
-          <ConfigCard handleSwitch={handleSwitch} name="consul" icon={consulIcon} />
-          {!state.consul ? null : (<div className={classes.planeContainer}>
-            <Typography>
-              Control Plane: 3{" "}
-              <FiberManualRecordRoundedIcon
-                className={classes.planeIcon}
-              />
-            </Typography>
-            <Typography>
-              Data Plane: 9
-                <FiberManualRecordRoundedIcon
-                className={classes.planeIcon}
-              />
-            </Typography>
-          </div>)}
+          <ConfigCard handleSwitch={handleSwitch} name="consul" icon={consulIcon} topInputPlaceholder="URL" bottomInputPlaceholder="Context"/>
+          {!state.consul ? null : (
+            <InfoContainer controlPlane="2" dataPlane="9"/>
+          )}
         </div>
         <div className={classes.dataContainer}>
-          <ConfigCard handleSwitch={handleSwitch} name="linkerd" icon={linkerdIcon} />
-          {!state.linkerd ? null : (<div className={classes.planeContainer}>
-            <Typography>
-              Control Plane: 1{" "}
-              <FiberManualRecordRoundedIcon
-                className={classes.planeIcon}
-              />
-            </Typography>
-            <Typography>
-              Data Plane: 12
-                <FiberManualRecordRoundedIcon
-                className={classes.planeIcon}
-              />
-            </Typography>
-          </div>)}
+          <ConfigCard handleSwitch={handleSwitch} name="linkerd" icon={linkerdIcon} topInputPlaceholder="URL" bottomInputPlaceholder="Context"/>
+          {!state.linkerd ? null : (
+            <InfoContainer controlPlane="4" dataPlane="6"/>
+          )}
         </div>
+        <Button className={classes.settingsButton}>Advanced Settings</Button>
       </Container>
     </Fade>
   );
