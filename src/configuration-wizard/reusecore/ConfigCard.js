@@ -9,7 +9,7 @@ import {
   CardContent,
   Typography,
 } from "@material-ui/core/";
-import TimerIcon from "@material-ui/icons/Timer";
+
 
 const MeshySwitch = withStyles({
   switchBase: {
@@ -142,26 +142,15 @@ const ConfigCard = ({
     }
   };
   return (
-    <Card
-      className={
-        state
-          ? `${classes.card} ${classes.cardChecked}`
-          : `${classes.card} ${classes.cardUnchecked}`
-      }
-      variant="outlined"
-    >
+    <Card className={`${classes.card} ${classes.cardChecked}`} variant="outlined">
       <CardContent className={classes.cardContent}>
-        <div
-          className={
-            state ? classes.contentTop : classes.contentTopUnchecked
-          }
-        >
+        <div className={classes.contentTop}>
           <div className={classes.iconContainer}>
-              <img
-                className={classes.cardIcon}
-                src={icon}
-                alt={`${name} icon`}
-              />
+            <img
+              className={classes.cardIcon}
+              src={icon}
+              alt={`${name} icon`}
+            />
             {name === 'openServiceMesh' ? <Typography className={classes.cardIconText} color="primary">
               Open Service <br />Mesh
               </Typography> : <Typography className={classes.cardIconText} color="primary">
@@ -176,13 +165,7 @@ const ConfigCard = ({
             onChange={handleChange}
           />
         </div>
-        <div
-          className={
-            state
-              ? classes.contentBottomChecked
-              : classes.contentBottomUnchecked
-          }
-        >
+        <div className={classes.contentBottomChecked}>
           <>{TopInputIcon ? <TopInputIcon className={classes.topInputIcon} /> : null}
             <Input
               placeholder={topInputPlaceholder}
