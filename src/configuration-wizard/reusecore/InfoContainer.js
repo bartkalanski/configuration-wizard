@@ -1,8 +1,6 @@
 import React from "react";
 import {
     makeStyles,
-    Container,
-    Fade,
     Typography,
 } from "@material-ui/core/";
 import FiberManualRecordRoundedIcon from "@material-ui/icons/FiberManualRecordRounded";

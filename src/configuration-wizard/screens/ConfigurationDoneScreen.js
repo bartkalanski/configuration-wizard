@@ -63,7 +63,7 @@ const ConfigurationDone = ({ handleUserClick }) => {
         You're ready to manage cloud native infrastructure
       </Typography>
       <Link to="/" className={classes.link}>
-        <Button className={classes.returnButton}>Return To Dashboard</Button>
+        <Button className={classes.returnButton}>Dashboard</Button>
       </Link>
       <Button onClick={() => handleUserClick(0)} className={classes.startOverButton}>Start Over</Button>
     </Container>
