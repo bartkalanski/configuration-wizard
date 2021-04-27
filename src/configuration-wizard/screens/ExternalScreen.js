@@ -65,13 +65,9 @@ const External = () => {
       <Container className={classes.container}>
         <div className={classes.cardContainer}>
           <ConfigCard name="grafana" icon={grafanaIcon} topInputPlaceholder="URL" bottomInputPlaceholder="API Key" handleSwitch={handleSwitch} />
-          {state.grafana ? (
-            <div className={classes.infoContainer}><Typography className={classes.infoContext}>Context</Typography></div>)
-            : null}
         </div>
         <div className={classes.cardContainer}>
           <ConfigCard name="prometheus" icon={prometheusIcon} topInputPlaceholder="" bottomInputPlaceholder="" handleSwitch={handleSwitch} />
-          {state.prometheus ? (<div className={classes.infoContainer}><Typography className={classes.infoContext}>Context</Typography></div>) : null}
         </div>
         <Button className={classes.settingsButton}>Advanced Settings</Button>
       </Container>

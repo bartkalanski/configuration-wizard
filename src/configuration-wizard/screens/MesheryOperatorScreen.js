@@ -37,16 +37,6 @@ const useStyles = makeStyles({
     marginTop: '.5rem',
     color: "#CACACA",
   },
-  settingsButton: {
-    position: 'absolute',
-    top: '23rem',
-    left: '2rem',
-    color: "#647881",
-    border: "1px solid #647881",
-    borderRadius: '.8rem',
-    fontSize: '.8rem',
-    fontWeight: '400',
-  }
 });
 
 const MesheryOperator = () => {
@@ -80,7 +70,6 @@ const MesheryOperator = () => {
                 <Typography className={classes.infoKind}>Disabled</Typography>
               </div>
             </div>
-            <Button className={classes.settingsButton}>Advanced Settings</Button>
           </>
         )}
 

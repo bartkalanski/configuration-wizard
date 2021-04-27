@@ -54,10 +54,7 @@ const ServiceMesh = () => {
     <Fade timeout={{ enter: "500ms" }} in="true">
       <Container className={classes.contentContainer}>
         <div className={classes.dataContainer}>
-          <ConfigCard handleSwitch={handleSwitch} name="openServiceMesh" icon={openServiceMeshIcon} topInputPlaceholder="URL" bottomInputPlaceholder="Context"/>
-          {!state.openServiceMesh ? null : (
-          <InfoContainer controlPlane="1" dataPlane="4"/>
-          )}
+          <ConfigCard handleSwitch={handleSwitch} name="openServiceMesh" icon={openServiceMeshIcon} topInputPlaceholder="URL" bottomInputPlaceholder=""/>
         </div>
         <div className={classes.dataContainer}>
           <ConfigCard handleSwitch={handleSwitch} name="consul" icon={consulIcon} topInputPlaceholder="URL" bottomInputPlaceholder="Context"/>
