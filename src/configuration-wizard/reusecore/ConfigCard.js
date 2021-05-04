@@ -121,6 +121,9 @@ const useStyles = makeStyles({
     "&:hover": {
       color: 'grey'
     }
+  },
+  file: {
+    display: "none",
   }
 });
 
@@ -133,6 +136,7 @@ const ConfigCard = ({
   bottomInputPlaceholder,
 }) => {
   const [state, setState] = React.useState(false);
+  const [kubeConfig, setKubeConfig] = React.useState('')
   const classes = useStyles();
 
   const handleChange = (e) => {
@@ -141,6 +145,7 @@ const ConfigCard = ({
       handleSwitch(e.target.name, e.target.checked);
     }
   };
+  const handleKubeConfigUpload = (file) => setKubeConfig(file)
   return (
     <Card className={`${classes.card} ${classes.cardChecked}`} variant="outlined">
       <CardContent className={classes.cardContent}>
@@ -166,11 +171,19 @@ const ConfigCard = ({
           />
         </div>
         <div className={classes.contentBottomChecked}>
-          <>{TopInputIcon ? <TopInputIcon className={classes.topInputIcon} /> : null}
+          <>{name === 'Kubernetes' ? <>
+            <label for="file-upload">{TopInputIcon ? <TopInputIcon className={classes.topInputIcon} /> : null}</label>
+            <input
+              type='file'
+              id="file-upload"
+              onChange={(e) => handleKubeConfigUpload(e.target.files[0].name)}
+              className={classes.file}
+            /></> : null}
             <Input
               placeholder={topInputPlaceholder}
               disableUnderline="false"
               className={classes.contentBottomInput}
+              value={kubeConfig}
             ></Input>
             <Input
               placeholder={bottomInputPlaceholder}
